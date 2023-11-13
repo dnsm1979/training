@@ -1,0 +1,10 @@
+devision 2023-10-04 20:36:33.382901 | division by zero
+ concatenate 2023-10-04 20:36:49.003404 | unsupported operand type(s) for +: 'int' and 'str'
+ devision 2023-10-04 20:36:49.007708 | division by zero
+ concatenate 2023-10-04 20:37:51.336323 | unsupported operand type(s) for +: 'int' and 'str'
+ devision 2023-10-04 20:37:51.341390 | division by zero
+ concatenate 2023-10-04 20:40:22.250532 | Inappropriate argument type.
+ devision 2023-10-04 20:40:22.255688 | Second argument to a division or modulo operation was zero.
+ concatenate 2023-10-04 21:04:01.007971 | Inappropriate argument type.
+ devision 2023-10-04 21:04:01.009655 | Second argument to a division or modulo operation was zero.
+ 

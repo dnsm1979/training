@@ -1,0 +1,15 @@
+.idea/
+bild/
+dist/
+__pycache__/
+target/
+.env
+.venv
+env/
+venv/
+ENV/
+env.bac/
+venv.bac/
+python_help.pdf/
+S-1-5-21-1273082160-2678245476-676485066-1001/
+S-1-5-21-1927571170-4232406582-2093036519-1001/
