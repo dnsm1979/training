@@ -1,4 +1,5 @@
 import re
+
 numbers = input('Введите номера телефонов через пробел: ').split()
 t = 0
 for i in range(len(numbers)):
