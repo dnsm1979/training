@@ -202,7 +202,9 @@
 #
 # #  3 задание: стек из второго задания, таким образом,
 # # чтобы его размер был нефиксированным.
-# from collections import deque
+
+
+from collections import deque
 
 
 def menu():
