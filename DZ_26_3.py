@@ -1,6 +1,7 @@
-# # 1 задание работа со списком пользователя
+# # # 1 задание работа со списком пользователя
 # def start_menu():
-#     func_start_menu = [add_number_to_user_list, del_all_number_in_user_list, show_sub_menu, check_number_in_user_list, replace_sub_menu]
+#     func_start_menu = [add_number_to_user_list, del_all_number_in_user_list, show_sub_menu, check_number_in_user_list,
+#                        replace_sub_menu]
 #     choice = int(input(f'1-Добавить новое число в список\n'
 #                        f'2-Удалить число(числа) из списка\n'
 #                        f'3-Показать содержимое списка\n'
@@ -14,6 +15,7 @@
 #     else:
 #         print('Такого пункта нет!')
 #
+#
 # def show_sub_menu():
 #     choice = int(input(f'1-Показать содержимое списка с начала\n'
 #                        f'2-Показать содержимое списка с конца\n'))
@@ -24,6 +26,7 @@
 #     else:
 #         print('Такого пункта нет!')
 #     return start_menu()
+#
 #
 # def replace_sub_menu():
 #     choice = int(input(f'1-Заменить только первое вхождение\n'
@@ -38,12 +41,15 @@
 #
 #
 # user_list = []
+#
+#
 # def add_user_list(*arcs):
 #     global user_list
 #     for i in arcs:
 #         user_list.append(i)
 #
 #     return start_menu()
+#
 #
 # def add_number_to_user_list():
 #     number = int(input('Введите число: '))
@@ -55,6 +61,7 @@
 #         print(f'Число {number} добавлено в список!')
 #         return start_menu()
 #
+#
 # def del_number_in_user_list():
 #     number = int(input('Введите число: '))
 #     if number in user_list:
@@ -63,6 +70,7 @@
 #         return start_menu()
 #     print(f'Числа {number} нет в списке!')
 #     return start_menu()
+#
 #
 # def del_all_number_in_user_list():
 #     number = int(input('Введите число: '))
@@ -74,7 +82,6 @@
 #     else:
 #         print(f'Числа {number} нет в списке!')
 #         return start_menu()
-#
 #
 #
 # def check_number_in_user_list():
@@ -116,10 +123,12 @@
 #
 #
 # add_user_list(5, 6, 8, 9, 77, 55, 5, 9, 5)
-
-# 2 задание: класс стека для работы со строками (стек строк)
+#
+#
+# # 2 задание: класс стека для работы со строками (стек строк)
 # def menu():
-#     func_menu = [stack.add_item, stack.pop_item, stack.score_ctack, stack.isEmpty, stack.isFull, stack.clear_stack, stack.peek]
+#     func_menu = [stack.add_item, stack.pop_item, stack.score_ctack, stack.isEmpty, stack.isFull, stack.clear_stack,
+#                  stack.peek]
 #     choice = int(input('1-помещение строки в стек\n'
 #                        '2-выталкивание строки из стека\n'
 #                        '3-подсчет количества строк в стеке\n'
@@ -127,12 +136,14 @@
 #                        '5-проверку полный ли стек\n'
 #                        '6-очистку стека\n'
 #                        '7-получение значения без выталкивания верхней строки из стека\n -> '))
-#     if 1 <= choice <= 7::
-#         return func_menu[choice -1]()
-#     else:
-#         print('Такого пункта меню нет!')
-# class Stack:
+#     if 1 <= choice <= 7: :
+#     return func_menu[choice - 1]()
 #
+# else:
+# print('Такого пункта меню нет!')
+#
+#
+# class Stack:
 #
 #     def __init__(self):
 #         self.stack = []
@@ -181,18 +192,17 @@
 #         if len(self.stack) == 0:
 #             print('Стек пустой')
 #             return self.stack
-#         print(self.stack[len(self.stack)-1])
+#         print(self.stack[len(self.stack) - 1])
 #         return self.stack
-#
 #
 #
 # stack = Stack()
 # while True:
 #     menu()
-
-#  3 задание: стек из второго задания, таким образом,
-# чтобы его размер был нефиксированным.
-from collections import deque
+#
+# #  3 задание: стек из второго задания, таким образом,
+# # чтобы его размер был нефиксированным.
+# from collections import deque
 
 
 def menu():
@@ -205,17 +215,15 @@ def menu():
                        '6-получение значения без выталкивания верхней строки из стека\n -> '))
 
     if 1 <= choice <= 6:
-        return func_menu[choice -1]()
+        return func_menu[choice - 1]()
     else:
         print('Такого пункта меню нет!')
 
 
 class Deque:
 
-
     def __init__(self):
         self.stack = deque()
-
 
     def add_item(self):
         item = input('-> ')
@@ -241,7 +249,6 @@ class Deque:
         print('Стек не пустой')
         return self.stack
 
-
     def clear_stack(self):
         while len(self.stack) > 0:
             self.stack.pop()
@@ -252,9 +259,8 @@ class Deque:
         if len(self.stack) == 0:
             print('Стек пустой')
             return self.stack
-        print(self.stack[len(self.stack)-1])
+        print(self.stack[len(self.stack) - 1])
         return self.stack
-
 
 
 stack = Deque()
