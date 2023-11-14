@@ -18,22 +18,21 @@ list_2 = [1, 2, 3, 4, 5, 10, 99, 33]
 #     if list_2[i] in list_1:
 #         list_3.append(list_2[i])
 # print(list_3)
-# 4. список, содержащий только
-# уникальные элементы каждого из списков
-# list_3 = []
-# for i in range(len(list_2)):
-#     if list_2[i] not in list_1:
-#         list_3.append(list_2[i])
-# for i in range(len(list_1)):
-#     if list_1[i] not in list_2:
-#         list_3.append(list_1[i])
-# print(list_3)
+# 4. список, содержащий только уникальные элементы каждого из списков
+list_3 = []
+for i in range(len(list_2)):
+    if list_2[i] not in list_1:
+        list_3.append(list_2[i])
+for i in range(len(list_1)):
+    if list_1[i] not in list_2:
+        list_3.append(list_1[i])
+print(list_3)
 # 5. список, содержащий только
 # минимальное и максимальное значение каждого из
 # списков
-list_3 = []
-list_3.append(min(list_1))
-list_3.append(min(list_2))
-list_3.append(max(list_1))
-list_3.append(max(list_2))
-print(list_3)
+# list_3 = []
+# list_3.append(min(list_1))
+# list_3.append(min(list_2))
+# list_3.append(max(list_1))
+# list_3.append(max(list_2))
+# print(list_3)

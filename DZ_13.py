@@ -7,3 +7,4 @@ for i in range(len(numbers)):
         print(f'Номер {t}: всё в порядке!')
     else:
         print(f'Номер {t}: не подходит!')
+        print('The end!')
