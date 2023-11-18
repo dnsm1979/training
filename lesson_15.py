@@ -150,6 +150,6 @@
 # for i in endless():
 #     print(i)
 
-names = ['Anna', 'Ivan', 'Oleg']
-gen = (i for i in names if 'a' not in i)
+names = ["Anna", "Ivan", "Oleg"]
+gen = (i for i in names if "a" not in i)
 print(*gen)

@@ -54,11 +54,12 @@
 # # point.k = 5
 # print(point.y)
 
-class Emoloyee:
 
+class Emoloyee:
     ID = 0
     TAX = 0.13
     STATE = 10000
+
     def __init__(self, email, salary):
         Emoloyee.ID += 1
         self.id = Emoloyee.ID
@@ -68,25 +69,26 @@ class Emoloyee:
     def get_salary_for_mouth(self, bonus=0):
         return self.salary - self.salary * self.TAX + bonus
 
-
-
     def __str__(self):
-        return f'id: {self.id}, email: {self.email}, salary: {self.salary}'
+        return f"id: {self.id}, email: {self.email}, salary: {self.salary}"
 
 
-class Manager(Emoloyee): # Наследование класа
+class Manager(Emoloyee):  # Наследование класа
     TAX = 0.1
+
     def __init__(self, email, salary, employees):
-        super(Manager, self).__init__(email, salary) # Переопределение параметров
+        super(Manager, self).__init__(email, salary)  # Переопределение параметров
         self.employees = employees
 
     def get_employees(self):
         if self.employees:
             for i_imployees in self.employees:
-                print(f'id: {i_imployees.id}\nemail: {i_imployees.email}\nsalary: {i_imployees.salary}')
+                print(
+                    f"id: {i_imployees.id}\nemail: {i_imployees.email}\nsalary: {i_imployees.salary}"
+                )
 
     def __str__(self):
-        return f'id: {self.id}, email: {self.email}, salary: {self.salary}, employees: {self.employees[0]}'
+        return f"id: {self.id}, email: {self.email}, salary: {self.salary}, employees: {self.employees[0]}"
 
 
 class Enginer(Emoloyee):
@@ -104,13 +106,13 @@ class Enginer(Emoloyee):
         return Enginer.STATE * hours - Enginer.STATE * hours * self.TAX
 
     def __str__(self):
-        return f'id: {self.id}, email: {self.email}, salary: {self.salary}, rank: {self.rank}'
+        return f"id: {self.id}, email: {self.email}, salary: {self.salary}, rank: {self.rank}"
 
 
-employee_1 = Emoloyee('test@mail.ru', 10000)
-employee_2 = Emoloyee('test_2@mail.ru', 50000)
-manager_1 = Manager('boss@mail.ru', 100000, [employee_1])
-enginer_1 = Enginer('enginer@mail.ru', 5)
+employee_1 = Emoloyee("test@mail.ru", 10000)
+employee_2 = Emoloyee("test_2@mail.ru", 50000)
+manager_1 = Manager("boss@mail.ru", 100000, [employee_1])
+enginer_1 = Enginer("enginer@mail.ru", 5)
 # print(employee_1.get_salary_for_mouth())
 # print(employee_2.get_salary_for_mouth())
 # print(employee_1)

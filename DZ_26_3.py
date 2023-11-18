@@ -208,58 +208,68 @@ from collections import deque
 
 
 def menu():
-    func_menu = [stack.add_item, stack.pop_item, stack.score_ctack, stack.isEmpty, stack.clear_stack, stack.peek]
-    choice = int(input('1-помещение строки в стек\n'
-                       '2-выталкивание строки из стека\n'
-                       '3-подсчет количества строк в стеке\n'
-                       '4-проверку пустой ли стек\n'
-                       '5-очистку стека\n'
-                       '6-получение значения без выталкивания верхней строки из стека\n -> '))
+    func_menu = [
+        stack.add_item,
+        stack.pop_item,
+        stack.score_ctack,
+        stack.isEmpty,
+        stack.clear_stack,
+        stack.peek,
+    ]
+    choice = int(
+        input(
+            "1-помещение строки в стек\n"
+            "2-выталкивание строки из стека\n"
+            "3-подсчет количества строк в стеке\n"
+            "4-проверку пустой ли стек\n"
+            "5-очистку стека\n"
+            "6-получение значения без выталкивания верхней строки из стека\n -> "
+        )
+    )
 
     if 1 <= choice <= 6:
         return func_menu[choice - 1]()
     else:
-        print('Такого пункта меню нет!')
+        print("Такого пункта меню нет!")
 
 
 class Deque:
-
     def __init__(self):
         self.stack = deque()
 
     def add_item(self):
-        item = input('-> ')
+        item = input("-> ")
         self.stack.append(item)
-        print('Строка добавлена в стек!')
+        print("Строка добавлена в стек!")
 
     def pop_item(self):
         if self.stack:
             self.stack.pop()
-            print('последняя строка вытолкнута!')
+            print("последняя строка вытолкнута!")
 
     def show_stack(self):
-        return f'Очередь: ', self.stack
+        return f"Очередь: ", self.stack
 
     def score_ctack(self):
-        print(f'Количество строк в стеке: {len(self.stack)}')
+        print(f"Количество строк в стеке: {len(self.stack)}")
         return self.stack
 
     def isEmpty(self):
         if len(self.stack) == 0:
-            print('Стек пустой!')
+            print("Стек пустой!")
             return self.stack
-        print('Стек не пустой')
+        print("Стек не пустой")
         return self.stack
 
     def clear_stack(self):
         while len(self.stack) > 0:
             self.stack.pop()
-        print(f'Стек очищен! ')
+        print(f"Стек очищен! ")
         return self.stack
 
     def peek(self):
         if len(self.stack) == 0:
-            print('Стек пустой')
+            print("Стек пустой")
             return self.stack
         print(self.stack[len(self.stack) - 1])
         return self.stack

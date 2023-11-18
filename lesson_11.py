@@ -190,6 +190,6 @@
 # names_dict = {i + 1: names_list[i] for  i in range(len(names_list))}
 # print(names_dict)
 
-names_list = ['Ivan', 'Anna', 'Maria', 'Sasha']
-names_dict = {i: [j for j in i] for  i in names_list}
+names_list = ["Ivan", "Anna", "Maria", "Sasha"]
+names_dict = {i: [j for j in i] for i in names_list}
 print(names_dict)

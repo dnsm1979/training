@@ -106,7 +106,12 @@
 # filtered_num_1 = list(filter(lambda x: len(str(x)) == 3, nums))
 # filtered_num_1 = list(map(int, filter(lambda x: len(str(x)) == 3, map(str(nums)))))
 
-students = [['Student 1', 4.8], ['Student 2', 4.7], ['Student 3', 4.9], ['Student 4', 4.6]]
+students = [
+    ["Student 1", 4.8],
+    ["Student 2", 4.7],
+    ["Student 3", 4.9],
+    ["Student 4", 4.6],
+]
 
 students_sorted = sorted(students, key=lambda x: x[1])
 print(students_sorted)

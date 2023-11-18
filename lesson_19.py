@@ -48,16 +48,13 @@
 # stack.show_stack()
 
 
-
-
 class Node:
-
     def __init__(self, value, next=None):
         self.value = value
         self.next = next
 
-class LinkedList:
 
+class LinkedList:
     def __init__(self, head):
         self.head = head
 
@@ -68,7 +65,6 @@ class LinkedList:
             yield current.value
             # print(current.value)
             current = current.next
-
 
     def remove_node(self, value):
         current = self.head
@@ -87,7 +83,6 @@ class LinkedList:
             t += 1
             current = current.next
         return t
-
 
     def centr_uzl(self):
         count = self.col_uzl()
@@ -114,9 +109,7 @@ class LinkedList:
         self.head = prev
 
 
-
-
-head = Node(5) #Головной узел
+head = Node(5)  # Головной узел
 node_1 = Node(7)
 head.next = node_1
 node_2 = Node(8)

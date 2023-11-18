@@ -92,11 +92,11 @@ while True:
     t = random.randint(1, 13)
     if t == 13:
         raise ValueError
-    number = int(input('Введите число: '))
+    number = int(input("Введите число: "))
     if number < 666:
-        print('Повторите ввод: ')
+        print("Повторите ввод: ")
     else:
-        print('Пока!')
+        print("Пока!")
         break
 
 # Задача 11
@@ -107,4 +107,3 @@ while True:
 #         tx.append(i)
 # tx_int = list(map(int, tx))
 # print(text[tx_int[1]:tx_int[0]:-1][1:])
-

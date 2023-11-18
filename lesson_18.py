@@ -50,6 +50,7 @@
 
 # Перегрузка операторов
 
+
 # class Number:
 #     def __init__(self, number):
 #         self.number = number
@@ -125,8 +126,7 @@ class Shop:
         self.tel = tel
 
 
-class Product():
-
+class Product:
     def __init__(self, name, price, quantity, shop_name, discount=0.0):
         self.shop_name = shop_name
         self.name = name
@@ -136,9 +136,6 @@ class Product():
 
     def get_total_product_price(self):
         return self.price * self.quantity * (1 - self.discount)
-
-
-
 
 
 class Cart:
@@ -152,31 +149,39 @@ class Cart:
             # return merge_cart
             self.cart += other.cart
             return self
-        return 'Невозможно произвести слияние карзин!'
+        return "Невозможно произвести слияние карзин!"
 
     def add_product(self, *args):
         for i_prroduct in args:
             self.cart.append(i_prroduct)
 
     def get_all_product_in_cart(self):
-        print('Товары в корзине:')
+        print("Товары в корзине:")
         for i_product in self.cart:
-            print(f'Название: {i_product.name} Цена: {i_product.price} Количество: {i_product.quantity} Магазин: {i_product.shop_name.shop_name} Общая стоимость: {i_product.get_total_product_price()}')
-        print(f'Общая стоимость товаров в корзине: {self.get_total_product_amount()}')
-
+            print(
+                f"Название: {i_product.name} Цена: {i_product.price} Количество: {i_product.quantity} Магазин: {i_product.shop_name.shop_name} Общая стоимость: {i_product.get_total_product_price()}"
+            )
+        print(f"Общая стоимость товаров в корзине: {self.get_total_product_amount()}")
 
     def get_total_product_amount(self):
-         total_price = sum([i_product.get_total_product_price() for i_product in self.cart])
-         return total_price
+        total_price = sum(
+            [i_product.get_total_product_price() for i_product in self.cart]
+        )
+        return total_price
 
-shop_1 = Shop('OZON', '12345', '12345')
-shop_2 = Shop('OPPO', '54321', '54321')
+
+shop_1 = Shop("OZON", "12345", "12345")
+shop_2 = Shop("OPPO", "54321", "54321")
 cart_1 = Cart()
-cart_1.add_product(Product('apple', 100, 5, shop_1, 0.3), Product('Fish', 500, 2, shop_2))
+cart_1.add_product(
+    Product("apple", 100, 5, shop_1, 0.3), Product("Fish", 500, 2, shop_2)
+)
 cart_1.get_all_product_in_cart()
 
 cart_2 = Cart()
-cart_2.add_product(Product('Banana', 100, 5, shop_1), Product('snake', 1500, 2, shop_2, 0.2))
+cart_2.add_product(
+    Product("Banana", 100, 5, shop_1), Product("snake", 1500, 2, shop_2, 0.2)
+)
 cart_2.get_all_product_in_cart()
 
 # cart_3 = cart_1 + cart_2

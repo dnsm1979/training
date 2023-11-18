@@ -1,4 +1,3 @@
-
 # file = open('filename.txt', 'r') # открытие файла r-чтение, w-запись, a-дозапись, r+ - чтение и запись, w+ -
 # file.write(f'Привет, я файл!\n')
 # file.write(f'Привет, я файл!\n')
@@ -64,20 +63,20 @@ import random
 # frequency = {}
 # with open('zen.txt', 'r') as file:
 #     text = file.read().lower()
-    # for sym in text:
-    #     if sym.isalpha():
-    #         frequency.setdefault(sym, text.count(sym))
-    # frequency = {sym: text.count(sym) for sym in text if sym.isalpha()}
-    # print(frequency)
-    # alpha_num = len(frequency.keys())
-    # total_num = sum(frequency.values())
-    # min_alpha = min(frequency.values())
-    #
-    # max_alpha = max(frequency.values())
-    # file.seek(0)
-    # line_num = len(file.readlines())
-    # world_num = len(text.split())
-    # print(alpha_num, total_num, min_alpha, max_alpha, line_num, world_num)
+# for sym in text:
+#     if sym.isalpha():
+#         frequency.setdefault(sym, text.count(sym))
+# frequency = {sym: text.count(sym) for sym in text if sym.isalpha()}
+# print(frequency)
+# alpha_num = len(frequency.keys())
+# total_num = sum(frequency.values())
+# min_alpha = min(frequency.values())
+#
+# max_alpha = max(frequency.values())
+# file.seek(0)
+# line_num = len(file.readlines())
+# world_num = len(text.split())
+# print(alpha_num, total_num, min_alpha, max_alpha, line_num, world_num)
 
 # with open('zen.txt', 'r') as file:
 #     text = file.read()
@@ -86,14 +85,11 @@ import random
 #         for sym in reversed(text):
 #             file_2.write(sym)
 
-with open('zen_3.txt', 'r', encoding='utf-8') as file:
-
-    with open('zen.txt', 'r', encoding='utf-8') as file_2:
+with open("zen_3.txt", "r", encoding="utf-8") as file:
+    with open("zen.txt", "r", encoding="utf-8") as file_2:
         text_2 = file_2.read()
         for bad in file.readlines():
             if bad.strip() in text_2:
-                text_2 = text_2.replace(bad, '')
-    with open('zen_4.txt', 'w', encoding='utf-8') as file_3:
+                text_2 = text_2.replace(bad, "")
+    with open("zen_4.txt", "w", encoding="utf-8") as file_3:
         file_3.write(text_2)
-
-

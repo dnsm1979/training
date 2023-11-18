@@ -73,8 +73,6 @@
 # print(heading)
 import re
 
-text = '4567'
-if re.match(r'\d{4}', text):
-    print('ok')
-
-
+text = "4567"
+if re.match(r"\d{4}", text):
+    print("ok")

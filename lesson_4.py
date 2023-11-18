@@ -4,7 +4,7 @@
 # decoded_string = encoded_string.decode(encoding='utf8')
 # print(decoded_string)
 
-string = 'abcdefg'
+string = "abcdefg"
 # print(len(string))
 # print(string[0])
 # print(string[-1])
@@ -12,7 +12,7 @@ string = 'abcdefg'
 # print(string[0:3])
 # print(string[:3])
 # print(string[3:])
-#print(string[0:5:2])
+# print(string[0:5:2])
 # print(string[-1:-4:-1])
 # print(string[::-1])
 
@@ -32,13 +32,13 @@ string = 'abcdefg'
 # print(text.count('p')) # Количество последовательносьей в строке
 # print(text.lower()) # все в нижнем регистре
 # print(text.upper()) # Все в верхнем регистре
-#print(text.replace(' ', '-')) # замена символов
+# print(text.replace(' ', '-')) # замена символов
 # print(text.index('n')) # индекс символа
 # print(text.find('ж'))print(text.find('ж')) #
 # print(len(text))
 # print(len(text.rstrip()))
 # print(text.swapcase())
-#string_2 = 'Python123@ruby78.ru'
+# string_2 = 'Python123@ruby78.ru'
 # print(string_2.isalnum())
 # print(string_2.isalpha()) # Проверка, Только из букв
 # print(string_2.isdigit()) # Проверка , только из цифр
@@ -54,7 +54,7 @@ string = 'abcdefg'
 # print('@' in string_2) # проверка на вхождение
 # print(string_2.count('@') == 1) # проверка на вхождение
 
-#string_3 = 'Python ruby js'
+# string_3 = 'Python ruby js'
 # print(string_3.split(''))
 
 # string = input('Введите текст: ')
@@ -127,9 +127,9 @@ string = 'abcdefg'
 # repl_word = input('Введите заменяемое слово: ')
 # print(string.replace(word, repl_word))
 
-string_1 = input('Введите 1-Ю строку: ')
-string_2 = input('Введите 2-Ю строку: ')
+string_1 = input("Введите 1-Ю строку: ")
+string_2 = input("Введите 2-Ю строку: ")
 if string_2.lower() in string_1.lower():
-    print('Есть контакт!')
+    print("Есть контакт!")
 else:
-    print('Мимо!')
+    print("Мимо!")

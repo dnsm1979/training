@@ -79,6 +79,7 @@
 #
 # nechet_num(2, 15)
 
+
 def lines_simbol(numbers_1: int, numbers_2: bool, simbol: str):
     """
     Линия из символов
@@ -92,9 +93,7 @@ def lines_simbol(numbers_1: int, numbers_2: bool, simbol: str):
     else:
         for i in range(numbers_1):
             print(simbol)
-lines_simbol(5, False, '*')
-lines_simbol(5, True, '+')
 
 
-
-
+lines_simbol(5, False, "*")
+lines_simbol(5, True, "+")

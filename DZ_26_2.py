@@ -1,43 +1,66 @@
 # 1 задание работа со списком пользователя
 def start_menu():
-    func_start_menu = [add_number_to_user_list, del_all_number_in_user_list, show_sub_menu, check_number_in_user_list, replace_sub_menu]
-    choice = int(input(f'1-Добавить новое число в список\n'
-                       f'2-Удалить число(числа) из списка\n'
-                       f'3-Показать содержимое списка\n'
-                       f'4-Проверить есть ли число в списке\n'
-                       f'5-Заменить значение в списке\n'
-                       f'0-Выход -> '))
+    func_start_menu = [
+        add_number_to_user_list,
+        del_all_number_in_user_list,
+        show_sub_menu,
+        check_number_in_user_list,
+        replace_sub_menu,
+    ]
+    choice = int(
+        input(
+            f"1-Добавить новое число в список\n"
+            f"2-Удалить число(числа) из списка\n"
+            f"3-Показать содержимое списка\n"
+            f"4-Проверить есть ли число в списке\n"
+            f"5-Заменить значение в списке\n"
+            f"0-Выход -> "
+        )
+    )
     if choice == 0:
         return
     elif 1 <= choice <= 5:
         return func_start_menu[choice - 1]()
     else:
-        print('Такого пункта нет!')
+        print("Такого пункта нет!")
+
 
 def show_sub_menu():
-    choice = int(input(f'1-Показать содержимое списка с начала\n'
-                       f'2-Показать содержимое списка с конца\n'))
+    choice = int(
+        input(
+            f"1-Показать содержимое списка с начала\n"
+            f"2-Показать содержимое списка с конца\n"
+        )
+    )
     if choice == 1:
         print(user_list)
     elif choice == 2:
         print(user_list[::-1])
     else:
-        print('Такого пункта нет!')
+        print("Такого пункта нет!")
     return start_menu()
 
+
 def replace_sub_menu():
-    choice = int(input(f'1-Заменить только первое вхождение\n'
-                       f'2-Заменить все вхождения\n'))
+    choice = int(
+        input(f"1-Заменить только первое вхождение\n" f"2-Заменить все вхождения\n")
+    )
     if choice == 1:
-        return replase_number_in_user_list(int(input('Число: ')), int(input('Новое число: ')))
+        return replase_number_in_user_list(
+            int(input("Число: ")), int(input("Новое число: "))
+        )
     elif choice == 2:
-        return replase_all_number_in_user_list(int(input('Число: ')), int(input('Новое число: ')))
+        return replase_all_number_in_user_list(
+            int(input("Число: ")), int(input("Новое число: "))
+        )
     else:
-        print('Такого пункта нет!')
+        print("Такого пункта нет!")
         return start_menu()
 
 
 user_list = []
+
+
 def add_user_list(*arcs):
     global user_list
     for i in arcs:
@@ -45,49 +68,51 @@ def add_user_list(*arcs):
 
     return start_menu()
 
+
 def add_number_to_user_list():
-    number = int(input('Введите число: '))
+    number = int(input("Введите число: "))
     if number in user_list:
-        print('Такое число уже есть в списке!')
+        print("Такое число уже есть в списке!")
         return start_menu()
     else:
         user_list.append(number)
-        print(f'Число {number} добавлено в список!')
+        print(f"Число {number} добавлено в список!")
         return start_menu()
+
 
 def del_number_in_user_list():
-    number = int(input('Введите число: '))
+    number = int(input("Введите число: "))
     if number in user_list:
         user_list.remove(number)
-        print(f'Первое вхождение {number} удалено из списка!')
+        print(f"Первое вхождение {number} удалено из списка!")
         return start_menu()
-    print(f'Числа {number} нет в списке!')
+    print(f"Числа {number} нет в списке!")
     return start_menu()
 
+
 def del_all_number_in_user_list():
-    number = int(input('Введите число: '))
+    number = int(input("Введите число: "))
     if number in user_list:
         while number in user_list:
             user_list.remove(number)
-        print(f'Все числа {number} удалены из списка!')
+        print(f"Все числа {number} удалены из списка!")
         return start_menu()
     else:
-        print(f'Числа {number} нет в списке!')
+        print(f"Числа {number} нет в списке!")
         return start_menu()
-
 
 
 def check_number_in_user_list():
-    number = int(input('Введите число: '))
+    number = int(input("Введите число: "))
     count = 0
     if number in user_list:
         for i in user_list:
             if i == number:
                 count += 1
-        print(f'{number} встречается в списке {count} раз(а)!')
+        print(f"{number} встречается в списке {count} раз(а)!")
         return start_menu()
     else:
-        print(f'Числа {number} нет в списке!')
+        print(f"Числа {number} нет в списке!")
         return start_menu()
 
 
@@ -96,10 +121,10 @@ def replase_number_in_user_list(number, new_number):
         for i in range(len(user_list)):
             if user_list[i] == number:
                 user_list[i] = new_number
-                print(f'Первое попавшееся число {number} заменено на {new_number}!')
+                print(f"Первое попавшееся число {number} заменено на {new_number}!")
                 return start_menu()
     else:
-        print(f'Числа {number} нет в списке!')
+        print(f"Числа {number} нет в списке!")
         return start_menu()
 
 
@@ -108,10 +133,10 @@ def replase_all_number_in_user_list(number, new_number):
         for i in range(len(user_list)):
             if user_list[i] == number:
                 user_list[i] = new_number
-        print(f'Числа {number} заменены на {new_number}!')
+        print(f"Числа {number} заменены на {new_number}!")
         return start_menu()
     else:
-        print(f'Числа {number} нет в списке!')
+        print(f"Числа {number} нет в списке!")
         return start_menu()
 
 

@@ -10,47 +10,50 @@ class Vihicle:
         self.wheel_count = 4
         self.refuel = 10
         self.max_speed = max_speed
-        self.__possible_failures = ['Дерево', 'Столб', 'Обрыв']
-
+        self.__possible_failures = ["Дерево", "Столб", "Обрыв"]
 
     def output_info(self):
-        print(f'Информация о машине\nназвание: {self.name}\n'
-              f'Масса: {self.weight}\n'
-              f'hp: {self.hp}')
+        print(
+            f"Информация о машине\nназвание: {self.name}\n"
+            f"Масса: {self.weight}\n"
+            f"hp: {self.hp}"
+        )
 
     def refuel_2(self, litress: float):
         self.refuel += litress
-        print(f'Машина заправлена на {self.refuel} литров')
+        print(f"Машина заправлена на {self.refuel} литров")
 
     def refuel_3(self, km):
         self.refuel -= km * 0.1
         if self.refuel <= 0:
-            print('Необходимо заправится!')
-            choice = int(input('На сколько запрвится?'))
+            print("Необходимо заправится!")
+            choice = int(input("На сколько запрвится?"))
             self.refuel(choice)
 
-        print(f'В баке осталось {self.refuel} литров')
+        print(f"В баке осталось {self.refuel} литров")
 
     def boost(self):
         car_time = 0
         for i in range(0, self.max_speed, 20):
             if random.randint(1, 10) == 5:
-                print(f'Вы встретили препятствие {random.choice(self.__possible_failures)} при пазгоне')
+                print(
+                    f"Вы встретили препятствие {random.choice(self.__possible_failures)} при пазгоне"
+                )
                 return
             car_time += 0.5
             time.sleep(0.5)
-            print(f'Текущая скорость: {i} км/ч')
-        print(f'Машина {self.name} достигла максимальной скорости!')
-
+            print(f"Текущая скорость: {i} км/ч")
+        print(f"Машина {self.name} достигла максимальной скорости!")
 
     # def __str__(self):
     #     return f'Информация о машине\nназвание: {self.name}\n'f'Масса: {self.weight}\n'f'hp: {self.hp}{self.wheel_count}'
 
-Vihicle_1 = Vihicle(name='audi', weihgt=2000, hp=500, max_speed=250)
+
+Vihicle_1 = Vihicle(name="audi", weihgt=2000, hp=500, max_speed=250)
 
 # Vihicle_1.output_info()
 #
-Vihicle_2 = Vihicle(name='bmw', weihgt=1800, hp=520, max_speed=270)
+Vihicle_2 = Vihicle(name="bmw", weihgt=1800, hp=520, max_speed=270)
 
 Vihicle_2.output_info()
 Vihicle_1.max_speed = 100
@@ -83,6 +86,7 @@ Vihicle_1.boost()
 # print(human.get_fulname())
 # import random
 from typing import List
+
 # class Student:
 #     def __init__(self, fulname: str, group_num: str, mark_list: List[int]):
 #         self.fulname = fulname

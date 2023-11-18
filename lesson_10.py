@@ -13,7 +13,6 @@ import sys
 # print(sys.getsizeof(list_man))
 
 
-
 # print(dictionary.keys()) # Показывает ключи
 # print(dictionary.values())# Показывает значения
 # print(dictionary.items())# Показывает ключ и значения
@@ -118,8 +117,4 @@ import sys
 # for key, value in frequency_dict.items():
 #     print(f'{key}: {value}')
 
-dict_1 = {
-    'key_1': {
-        'key_2'
-    }
-}
+dict_1 = {"key_1": {"key_2"}}
