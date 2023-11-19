@@ -9,7 +9,6 @@ class AbstractFactory:
         raise NotImplemented
 
 
-
 class ConcreteFactory(AbstractFactory):
     def create_carbonara(self):
         return Сarbonara()
@@ -37,7 +36,7 @@ class Сarbonara:
         self.supplements[key] = value
 
     def __str__(self):
-        return f'Pasta Сarbonara from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives.'
+        return f"Pasta Сarbonara from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives."
 
 
 class Bolognese:
@@ -56,7 +55,7 @@ class Bolognese:
         self.supplements[key] = value
 
     def __str__(self):
-        return f'Pasta Bolognese from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives.'
+        return f"Pasta Bolognese from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives."
 
 
 class Fettuccine_Alfredo:
@@ -75,23 +74,35 @@ class Fettuccine_Alfredo:
         self.supplements[key] = value
 
     def __str__(self):
-        return f'Pasta Fettuccine Alfredo from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives.'
+        return f"Pasta Fettuccine Alfredo from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives."
+
 
 def test_concrete_factory_creation():
     factory = ConcreteFactory()
 
-    assert isinstance(factory, AbstractFactory), "ConcreteFactory is not an instance of AbstractFactory"
+    assert isinstance(
+        factory, AbstractFactory
+    ), "ConcreteFactory is not an instance of AbstractFactory"
 
 
 def test_product_creation_by_factory():
     factory = ConcreteFactory()
 
-    product_a = factory.create_product_a()
-    product_b = factory.create_product_b()
+    carbonara = factory.create_carbonara()
+    bolognese = factory.create_bolognese()
+    fettuccine_alfredo = factory.create_fettuccine_alfredo()
 
-    assert isinstance(product_a, ProductA1), "ProductA is not created by ConcreteFactory"
-    assert isinstance(product_b, ProductB1), "ProductB is not created by ConcreteFactory"
+    assert isinstance(
+        carbonara, Сarbonara
+    ), "ProductA is not created by ConcreteFactory"
+    assert isinstance(
+        bolognese, Bolognese
+    ), "ProductB is not created by ConcreteFactory"
+    assert isinstance(
+        fettuccine_alfredo, Fettuccine_Alfredo
+    ), "ProductB is not created by ConcreteFactory"
 
 
 test_concrete_factory_creation()
 test_product_creation_by_factory()
+print(Сarbonara)

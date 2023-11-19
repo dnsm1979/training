@@ -21,3 +21,7 @@ print('Original Phone:', original_phone)
 
 cloned_phone = original_phone.clone()
 print('Cloned Phone:', cloned_phone)
+
+original_phone = Phone('256GB', 'Samsung', 'Black', 'smartphone', 'Android')
+cloned_phone = original_phone.clone()
+print('Original Phone:', original_phone, '\n''Cloned Phone:', cloned_phone)
