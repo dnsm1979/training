@@ -22,16 +22,60 @@ class ConcreteFactory(AbstractFactory):
 
 
 class Сarbonara:
-    ...
+    def __init__(self):
+        self.sauce = {}
+        self.filling = {}
+        self.supplements = {}
+
+    def add_sauce(self, key, value):
+        self.sauce[key] = value
+
+    def add_filling(self, key, value):
+        self.filling[key] = value
+
+    def add_supplements(self, key, value):
+        self.supplements[key] = value
+
+    def __str__(self):
+        return f'Pasta Сarbonara from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives.'
 
 
 class Bolognese:
-    ...
+    def __init__(self):
+        self.sauce = {}
+        self.filling = {}
+        self.supplements = {}
+
+    def add_sauce(self, key, value):
+        self.sauce[key] = value
+
+    def add_filling(self, key, value):
+        self.filling[key] = value
+
+    def add_supplements(self, key, value):
+        self.supplements[key] = value
+
+    def __str__(self):
+        return f'Pasta Bolognese from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives.'
 
 
 class Fettuccine_Alfredo:
-    ...
+    def __init__(self):
+        self.sauce = {}
+        self.filling = {}
+        self.supplements = {}
 
+    def add_sauce(self, key, value):
+        self.sauce[key] = value
+
+    def add_filling(self, key, value):
+        self.filling[key] = value
+
+    def add_supplements(self, key, value):
+        self.supplements[key] = value
+
+    def __str__(self):
+        return f'Pasta Fettuccine Alfredo from {self.filling} ingredients, with {self.sauce} sauce, with {self.supplements} additives.'
 
 def test_concrete_factory_creation():
     factory = ConcreteFactory()
