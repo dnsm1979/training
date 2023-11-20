@@ -1,10 +1,10 @@
 # 1 задание
-string = input('Введите стоку для проверки: ')
-str_2 = string.replace(' ', '')
+string = input("Введите стоку для проверки: ")
+str_2 = string.replace(" ", "")
 if str_2.lower() == str_2.lower()[::-1]:
-    print('Строка является палиндромом!')
+    print("Строка является палиндромом!")
 else:
-    print('Строка не является палиндромом!')
+    print("Строка не является палиндромом!")
 
 # 2 задание
 # string = input('Введите текст: ').split()
@@ -15,4 +15,3 @@ else:
 # string = input('Введите текст: ')
 # Words = input('Введите слово: ')
 # print(string.find(Words))
-

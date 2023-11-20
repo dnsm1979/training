@@ -1,4 +1,3 @@
-
 # age = int(input('Введите ваш возрост: '))
 # if 18 >= age >= 70:
 #     print('Вы можете зарегистрироваться! ')
@@ -201,9 +200,7 @@
 # else:
 #     print('Сумма балов: ', sum_ocenka, 'Ты не поступил на бюджет!')
 
-minut = int(input('Введите количество минут: '))
+minut = int(input("Введите количество минут: "))
 hours = minut // 60
 ost_min = minut % 60
 print(hours, ost_min)
-
-

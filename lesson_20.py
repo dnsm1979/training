@@ -120,44 +120,47 @@ def hash_password(password):
     hashed_string = hash_function.hexdigest()
     return hashed_string
 
+
 def users_check():
-    choise = int(input('Выберите пункт:\n1-авторизироваться\n2-зарегистрироваться -> '))
+    choise = int(input("Выберите пункт:\n1-авторизироваться\n2-зарегистрироваться -> "))
     if choise == 1:
-        mail = input('Введите email: ')
+        mail = input("Введите email: ")
         get_user_by_email(mail)
     elif choise == 2:
-        mail = input('Введите email: ')
-        passsword = input('Введите пароль: ')
+        mail = input("Введите email: ")
+        passsword = input("Введите пароль: ")
         user = set_user_data(mail, passsword)
         return add_new_user_to_file(user)
 
 
 def set_user_data(email, password):
-    user_data = {'email': email, 'password': hash_password(password)}
+    user_data = {"email": email, "password": hash_password(password)}
     return user_data
+
+
 def add_new_user_to_file(user):
-    with open('users.json', 'r') as file:
+    with open("users.json", "r") as file:
         users_list = json.loads(file.read())
         users_list.append(user)
-    with open('users.json', 'w') as file:
+    with open("users.json", "w") as file:
         file.write(json.dumps(users_list, indent=4))
 
+
 def get_user_by_email(email):
-    with open('users.json', 'r') as file:
+    with open("users.json", "r") as file:
         users_list = json.loads(file.read())
         # print(users_list)
         for i_user in users_list:
-            if i_user['email'] == email:
-                password = input('Введите пароль: ')
-                if hash_password(password) == i_user['password']:
-                    print('Вы авторизировались!')
+            if i_user["email"] == email:
+                password = input("Введите пароль: ")
+                if hash_password(password) == i_user["password"]:
+                    print("Вы авторизировались!")
                     return
                 else:
-                    print('Пароль не верный!')
+                    print("Пароль не верный!")
                     return
-        print('Вас нет в пользователях!')
+        print("Вас нет в пользователях!")
         return
-
 
 
 users_check()

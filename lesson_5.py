@@ -108,8 +108,8 @@
 # numbers = input('Введите числа через пробел: ').split()
 # num_count = input('Введите число: ')
 # print(numbers.count(num_count))
-numbers = input('Введите числа через пробел: ').split()
-num_count = int(input('Введите число: '))
+numbers = input("Введите числа через пробел: ").split()
+num_count = int(input("Введите число: "))
 numbers_int = list(map(int, numbers))
 t = 0
 for i in range(len(numbers_int)):
@@ -127,5 +127,3 @@ print(t)
 # for index2 in numbers_int:
 #     sr_oriph2 += index2
 # print(f'Среднеарифметическое равно: {sr_oriph2 / len(numbers_int)}')
-
-

@@ -102,39 +102,41 @@
 # Задание 3
 import random
 import time
+
+
 class Warriors:
     def __init__(self, name: str, health: int):
         self.name = name
         self.health = health
-
 
     def action(self):
         self.health -= 20
         return war()
 
 
-
-Warrior_1 = Warriors(name='Smith', health=100)
-Warrior_2 = Warriors(name='Thomas', health=100)
+Warrior_1 = Warriors(name="Smith", health=100)
+Warrior_2 = Warriors(name="Thomas", health=100)
 
 
 def war():
     while True:
-        print(f'{Warrior_1.name}: {Warrior_1.health}\n{Warrior_2.name}: {Warrior_2.health}')
+        print(
+            f"{Warrior_1.name}: {Warrior_1.health}\n{Warrior_2.name}: {Warrior_2.health}"
+        )
         time.sleep(0.5)
         if Warrior_1.health == 0:
-            print(f'Воин {Warrior_2.name} победил воина {Warrior_1.name}!')
+            print(f"Воин {Warrior_2.name} победил воина {Warrior_1.name}!")
             return
         elif Warrior_2.health == 0:
-            print((f'Воин {Warrior_1.name} победил воина {Warrior_2.name}!'))
+            print((f"Воин {Warrior_1.name} победил воина {Warrior_2.name}!"))
             return
         else:
             if random.randint(1, 2) == 1:
-                print(f'Воин {Warrior_1.name} атакует воина {Warrior_2.name}')
+                print(f"Воин {Warrior_1.name} атакует воина {Warrior_2.name}")
                 return Warrior_2.action()
             else:
-                print(f'Воин {Warrior_2.name} атакует воина {Warrior_1.name}')
+                print(f"Воин {Warrior_2.name} атакует воина {Warrior_1.name}")
                 return Warrior_1.action()
+
+
 war()
-
-

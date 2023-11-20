@@ -1,5 +1,5 @@
- # 1. Генераторное выражение выдающее квадраты чисел из заданного
- # диапазона чисел.
+# 1. Генераторное выражение выдающее квадраты чисел из заданного
+# диапазона чисел.
 # def generation(start, end):
 #     for i in range(start, end + 1):
 #         yield i ** 2
@@ -8,7 +8,7 @@
 #     print(i)
 
 # 2. Генераторная функция принимающая начало и конец диапазона,
- # и выдающая только простые числа.
+# и выдающая только простые числа.
 
 # def gen_isprime(start, end):
 #     k = 0
@@ -25,6 +25,7 @@
 #     print(i)
 # 3*. Класс-итератор выдающий только чётные числа из заданного диапазона
 
+
 class genetation:
     def __init__(self, start, end):
         self.start = start
@@ -32,18 +33,18 @@ class genetation:
         self.cur = start - 1
 
     def __iter__(self):
-        print('__iter__')
+        print("__iter__")
         return self
 
     def __next__(self):
         # print('__next__')
 
-        if  self.cur == self.end:
+        if self.cur == self.end:
             raise StopIteration
         self.cur += 1
         if self.cur % 2 == 0:
             return self.cur
 
+
 for i in genetation(10, 20):
     print(i)
-

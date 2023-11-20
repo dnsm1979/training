@@ -70,11 +70,11 @@
 # for i in range(1, 10):
 #     print(numter, '*', i, '=', numter * i)
 
-start = int(input('Введите первое число диапозона: '))
-end = int(input('Введите второе число диапозона: '))
-number = int(input('Введите число: '))
+start = int(input("Введите первое число диапозона: "))
+end = int(input("Введите второе число диапозона: "))
+number = int(input("Введите число: "))
 for i in range(start, end + 1):
     if i == number:
-        print(f'!{i}!', end=' ')
+        print(f"!{i}!", end=" ")
         continue
-    print(i, end=' ')
+    print(i, end=" ")

@@ -21,14 +21,14 @@
 # print('Чисел кратным 5: ', t)
 
 # 3 Задание
-num_1 = int(input('Введите число начала диапозона: '))
-num_2 = int(input('Введите число конец диапозона: '))
+num_1 = int(input("Введите число начала диапозона: "))
+num_2 = int(input("Введите число конец диапозона: "))
 for i in range(num_1, num_2 + 1):
     if i % 3 != 0 and i % 5 != 0:
         print(i)
     elif i % 3 == 0 and i % 5 == 0:
-        print('Fizz Buzz')
+        print("Fizz Buzz")
     elif i % 5 == 0:
-        print('Buzz')
+        print("Buzz")
     elif i % 3 == 0:
-        print('Fizz')
+        print("Fizz")

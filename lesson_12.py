@@ -1,4 +1,3 @@
-
 # turple_1 = ('Ivan', 15)
 # turple_2 = (turple_1 + ('Petr', 15))
 # # print(turple_1 + ('Petr', 15))
@@ -26,7 +25,7 @@
 # a = 10, 20
 # print(a)
 
- # zip
+# zip
 #
 # list_1 = ['Moscow', 'Berlin']
 # list_2 = [1000000, 2000000, 300000]
@@ -139,13 +138,10 @@
 #
 # print(get('href', site))
 
-text = ('banana', 'apple', 'bananamango', 'mango', 'srtawberry-banana')
-fruct = input('Введите фрукт для поиска')
+text = ("banana", "apple", "bananamango", "mango", "srtawberry-banana")
+fruct = input("Введите фрукт для поиска")
 t = 0
 for i in text:
     if fruct in text[i]:
         t += 1
 print(t)
-
-
-

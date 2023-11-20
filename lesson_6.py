@@ -1,4 +1,3 @@
-
 # list_1 = [1, 2, 3, 4]
 # list_2 = [5, 6, 7, 8]
 # list_11 = ['1', '2', '3', '4']
@@ -57,4 +56,3 @@
 # students = [['Петров', 4.5], ['Сидоров', 4.2], ['Иванов', 4.1], ['Иванова', 3.5], ['Петрова', 4.9]]
 # students_2 = [student for student in students if student[1] >= 4.5]
 # print(students_2)
-

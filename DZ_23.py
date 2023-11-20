@@ -194,6 +194,7 @@
 # comparison = airplane_1 <= airplane_2
 # print(f'Сравнение двух самолетов по максимально возможному количеству пассажиров на борту: {airplane_1.capacity} <= {airplane_2.capacity} -> ', comparison)
 
+
 # Задание 4
 class Flat:
     def __init__(self, area, price, floor):
@@ -205,53 +206,66 @@ class Flat:
         if isinstance(other, Flat):
             return self.aria == other.aria
         else:
-            return 'Сравнение не возможно!'
+            return "Сравнение не возможно!"
+
     def __ne__(self, other):
         if isinstance(other, Flat):
             return self.aria != other.aria
         else:
-            return 'Сравнение не возможно!'
+            return "Сравнение не возможно!"
 
     def __gt__(self, other):
         if isinstance(other, Flat):
             return self.price > other.price
         else:
-            return 'Сравнение не возможно!'
+            return "Сравнение не возможно!"
 
     def __lt__(self, other):
         if isinstance(other, Flat):
             return self.price < other.price
         else:
-            return 'Сравнение не возможно!'
+            return "Сравнение не возможно!"
 
     def __ge__(self, other):
         if isinstance(other, Flat):
             return self.price >= other.price
         else:
-            return 'Сравнение не возможно!'
+            return "Сравнение не возможно!"
 
     def __le__(self, other):
         if isinstance(other, Flat):
             return self.price <= other.price
         else:
-            return 'Сравнение не возможно!'
+            return "Сравнение не возможно!"
 
 
 flat_1 = Flat(60, 5000000, 8)
 flat_2 = Flat(58, 5000000, 5)
 
 comparison = flat_1 == flat_2
-print(f'Проверка на равенство площадей квартир: {flat_1.aria} == {flat_2.aria} -> ', comparison)
+print(
+    f"Проверка на равенство площадей квартир: {flat_1.aria} == {flat_2.aria} -> ",
+    comparison,
+)
 comparison = flat_1 != flat_2
-print(f'Проверка на равенство площадей квартир: {flat_1.aria} != {flat_2.aria} -> ', comparison)
+print(
+    f"Проверка на равенство площадей квартир: {flat_1.aria} != {flat_2.aria} -> ",
+    comparison,
+)
 
 comparison = flat_1 > flat_2
-print(f'Сравнение двух квартир по цене: {flat_1.price} > {flat_2.price} -> ', comparison)
+print(
+    f"Сравнение двух квартир по цене: {flat_1.price} > {flat_2.price} -> ", comparison
+)
 comparison = flat_1 < flat_2
-print(f'Сравнение двух квартир по цене: {flat_1.price} > {flat_2.price} -> ', comparison)
+print(
+    f"Сравнение двух квартир по цене: {flat_1.price} > {flat_2.price} -> ", comparison
+)
 comparison = flat_1 >= flat_2
-print(f'Сравнение двух квартир по цене: {flat_1.price} >= {flat_2.price} -> ', comparison)
+print(
+    f"Сравнение двух квартир по цене: {flat_1.price} >= {flat_2.price} -> ", comparison
+)
 comparison = flat_1 <= flat_2
-print(f'Сравнение двух квартир по цене: {flat_1.price} <= {flat_2.price} -> ', comparison)
-
-
+print(
+    f"Сравнение двух квартир по цене: {flat_1.price} <= {flat_2.price} -> ", comparison
+)

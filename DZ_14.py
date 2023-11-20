@@ -56,7 +56,7 @@ def exp_num_ls(exp, *nums):
     for i in range(len(nums)):
         num_ls.append(nums[i] ** exp)
 
-    print(f'Новый список элементов в степени {exp}: {num_ls}')
+    print(f"Новый список элементов в степени {exp}: {num_ls}")
+
 
 exp_num_ls(2, 2, 3, 4, 5, 6)
-
