@@ -119,4 +119,6 @@ fettuccine_alfredo.add_supplements('Salt', 'taste')
 
 test_concrete_factory_creation()
 test_product_creation_by_factory()
-
+print(carbonara)
+print(bolognese)
+print(fettuccine_alfredo)
