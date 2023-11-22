@@ -46,6 +46,7 @@ from fractions import Fraction
 # if __name__ == '__main':
 #     unittest.main()
 
+
 class Calculator:
     def __init__(self, number):
         self.fraction = Fraction(number)
@@ -70,6 +71,7 @@ class Calculator:
 
     def percent(self, other):
         return self.fraction * other.fraction / 100
+
 
 class TestCalculator(unittest.TestCase):
     def test_add(self):
@@ -108,7 +110,5 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(num1.percent(num2), Fraction(0.5))
 
 
-
-
-if __name__ == '__main':
+if __name__ == "__main":
     unittest.main()
