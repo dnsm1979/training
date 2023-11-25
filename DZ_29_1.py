@@ -1,7 +1,7 @@
 class ShoesModel(object):
-    def __init__(self, gender, type, color, price, manufacturer, size):
+    def __init__(self, gender, types, color, price, manufacturer, size):
         self.gender = gender
-        self.type = type
+        self.types = types
         self.color = color
         self.price = price
         self.manufacturer = manufacturer
@@ -9,47 +9,52 @@ class ShoesModel(object):
 
 
 class ShoesView(object):
-    @staticmethod
+    def __init__(self, model):
+        self.model = model
+
     def display_shoes(shoes):
-        print(f'Gender: {shoes.gender}\nType: {shoes.type}'
-              f'\nColor: {shoes.color}\nPrice: {shoes.price}'
-              f'\nManufacturer: {shoes.manufacturer}\nSize: {shoes.size}')
+        print(
+            f"Gender: {shoes.model.gender}\nType: {shoes.model.types}"
+            f"\nColor: {shoes.model.color}\nPrice: {shoes.model.price}"
+            f"\nManufacturer: {shoes.model.manufacturer}\nSize: {shoes.model.size}"
+        )
+
+    def display_shoes_value(self, value):
+        print(f"{value}: {self.model.value}")
+
 
 class ShoesController(object):
-    def __init__(self, model, view):
+    def __init__(self, model):
         self.model = model
-        self.view = view
+        self.view = ShoesView(self.model)
 
-    def set_shoes_gender(self, values):
-        self.model.values = values
+    def set_shoes(self, value):
+        self.model.value = value
 
-    def del_shoes(self, values):
-        self.model.values = values
-        del self.model.values
+    def del_shoes(self, value):
+        self.model.value = value
+        del self.model.value
 
-    def check_shoes(self, values):
-        self.model.values = values
-        if values in ShoesModel:
-            print(f'The shoe model {values} is in the database!')
-        else:
-            print(f'The shoe model {values} is not in the database!')
+    def check_shoes(self, items):
+        self.model.values = items
+        for i in self.model.value:
+            print(i)
 
-    def number_shoes(self, values):
-        self.model.values = values
-        count = 0
-        for i in self.model.values:
-            if i in self.model.values:
-                count += 1
-        print(f'The number of shoes is in the database {count}')
+            #     print(f"The shoe model {items} is in the database!")
+            # else:
+            #     print(f"The shoe model {items} is not in the database!")
 
+    def value_shoes(self, value):
+        self.view.display_shoes_value(value)
 
     def display_shoes(self):
         self.view.display_shoes()
 
 
-if __name__ == '__main__':
-    shoes1 = ShoesModel('Man', 'Sneakers', 'Black', '250$', 'Nike', '8.5')
-    shoes2 = ShoesModel('Women', 'Shoes', 'Red', '400$', 'Gucсi', '7')
+if __name__ == "__main__":
+    shoes1 = ShoesModel("Man", "Sneakers", "Black", "250$", "Nike", "8.5")
+    shoes2 = ShoesModel("Women", "Shoes", "Red", "400$", "Gucсi", "7")
 
     controller_1 = ShoesController(shoes1)
     controller_1.display_shoes()
+    controller_1.value_shoes("7")
