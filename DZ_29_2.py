@@ -30,7 +30,7 @@ class RecipeController(object):
 
 if __name__ == '__main__':
     recipe1 = RecipeModel('Alexandra Sedova', 'salad', 'Salad with chicken, arugula and tangerine', 'https://art-lunch.ru/recipe/salat-s-kuricej-rukoloj-i-mandarinom_foto/', 'chicken fillet, arugula, tangerines, cucumbers, feta cheese, soy sauce, olive oil', 'Russian')
-    recipe2 = RecipeModel('Women', 'Shoes', 'Red', '400$', 'Gucсi', '7')
+
 
     controller_1 = RecipeController(recipe1)
     controller_1.display_view()
