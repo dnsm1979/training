@@ -1,0 +1,53 @@
+import time
+
+from PIL import ImageGrab, ImageOps
+import pyautogui
+import numpy
+
+
+class DinoBot:
+    def __init__(self, replay_btn, dino):
+        self.replay_btn = replay_btn
+        self.dino = dino
+
+    def restart_game(self):
+        pyautogui.click(self.replay_btn)
+
+    def jump(self):
+        pyautogui.keyDown('space')
+        time.sleep(0.05)
+        pyautogui.keyUp('space')
+
+    def down(self):
+        pyautogui.keyDown('down')
+        time.sleep(seconds)
+
+    def grabimage(self):
+        box = (self.dino[0] + 35, # x1
+               self.dino[1], # y1
+               self.dino[0] + 75, #x2
+               self.dino[1] + 35 #y2
+               )
+        image = ImageGrab.grab(box)
+        grayImage = ImageOps.grayscale(image)
+        a = numpy.array(grayImage.getcolors())
+        return a.sum()
+
+
+
+# 460 463
+
+
+def main():
+    replay_coord = (460, 463)
+    dino = (223, 469)
+    bot = DinoBot(replay_coord, dino)
+    bot.restart_game()
+    time.sleep(1)
+    bot.jump()
+    bot.down()
+    while True:
+        if bot.grabimage() != 1647:
+            bot.jump()
+vv
+main()
