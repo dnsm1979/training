@@ -1,4 +1,6 @@
-class ShoesModel(object):
+class ShoesModel:
+    size_dict = {"7": 40, "7.5": 41, "8": 42}
+
     def __init__(self, gender, types, color, price, manufacturer, size):
         self.gender = gender
         self.types = types
@@ -8,7 +10,7 @@ class ShoesModel(object):
         self.size = size
 
 
-class ShoesView(object):
+class ShoesView:
     def __init__(self, model):
         self.model = model
 
@@ -19,11 +21,11 @@ class ShoesView(object):
             f"\nManufacturer: {shoes.model.manufacturer}\nSize: {shoes.model.size}"
         )
 
-    def display_shoes_value(self, value):
-        print(f"{value}: {self.model.value}")
+    def display_shoes_size_ru(self, value):
+        print(f"Ru size shoes: {value}")
 
 
-class ShoesController(object):
+class ShoesController:
     def __init__(self, model):
         self.model = model
         self.view = ShoesView(self.model)
@@ -31,24 +33,12 @@ class ShoesController(object):
     def set_shoes(self, value):
         self.model.value = value
 
-    def del_shoes(self, value):
-        self.model.value = value
-        del self.model.value
-
-    def check_shoes(self, items):
-        self.model.values = items
-        for i in self.model.value:
-            print(i)
-
-            #     print(f"The shoe model {items} is in the database!")
-            # else:
-            #     print(f"The shoe model {items} is not in the database!")
-
-    def value_shoes(self, value):
-        self.view.display_shoes_value(value)
-
     def display_shoes(self):
         self.view.display_shoes()
+
+    def display_size(self, value):
+        size_ru = self.model.size_dict[value]
+        self.view.display_shoes_size_ru(size_ru)
 
 
 if __name__ == "__main__":
@@ -57,4 +47,4 @@ if __name__ == "__main__":
 
     controller_1 = ShoesController(shoes1)
     controller_1.display_shoes()
-    controller_1.value_shoes("7")
+    controller_1.display_size("7")

@@ -102,20 +102,21 @@ def test_product_creation_by_factory():
         fettuccine_alfredo, Fettuccine_Alfredo
     ), "ProductB is not created by ConcreteFactory"
 
+
 carbonara = Сarbonara()
-carbonara.add_sauce('egg yolks', '4 pieces')
-carbonara.add_filling('Spaghetti', '400 g')
-carbonara.add_supplements('Salt', 'taste')
+carbonara.add_sauce("egg yolks", "4 pieces")
+carbonara.add_filling("Spaghetti", "400 g")
+carbonara.add_supplements("Salt", "taste")
 
 bolognese = Bolognese()
-bolognese.add_sauce('Tomatoes in their own juice', '500 g')
-bolognese.add_filling('Spaghetti', '400 g')
-bolognese.add_supplements('Salt', 'taste')
+bolognese.add_sauce("Tomatoes in their own juice", "500 g")
+bolognese.add_filling("Spaghetti", "400 g")
+bolognese.add_supplements("Salt", "taste")
 
 fettuccine_alfredo = Fettuccine_Alfredo()
-fettuccine_alfredo.add_sauce('Cream', '100 ml')
-fettuccine_alfredo.add_filling('Spaghetti', '400 g')
-fettuccine_alfredo.add_supplements('Salt', 'taste')
+fettuccine_alfredo.add_sauce("Cream", "100 ml")
+fettuccine_alfredo.add_filling("Spaghetti", "400 g")
+fettuccine_alfredo.add_supplements("Salt", "taste")
 
 test_concrete_factory_creation()
 test_product_creation_by_factory()
@@ -123,4 +124,3 @@ test_product_creation_by_factory()
 print(carbonara)
 print(bolognese)
 print(fettuccine_alfredo)
-
