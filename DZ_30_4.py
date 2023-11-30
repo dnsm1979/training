@@ -16,27 +16,28 @@ class AllThread:
                         with open('finish_text.txt', 'wa', encoding="utf-8") as text_2:
                             text_2.write(f'{text}\n')
 
+    def search_words(self):
+        words = []
+        with open('finish_text.txt', 'a', encoding="utf-8") as text:
+            for w in words:
+                for line in text:
+                    if w in line:
+                        line.replace(w, "")
+        with open('finish_text.txt', 'w', encoding="utf-8") as text2:
+            text2.write(text)
 
-
-
-
-
-
-    def copy_dirictory(self):
-        source_path = self.copy_path
-        if path.exists(source_path):
-            destination_path = self.target_path
-            new_location = shutil.move(source_path, destination_path)
-            print(f"Все файлы и папки перемещаются в нужное место, {new_location}")
-        else:
-            print("Неверный путь к каталогу.")
 
 
 if __name__ == "__main__":
     thread = AllThread()
-    thread_1 = Thread(target=thread.copy_dirictory())
+    thread_1 = Thread(target=thread.search_file())
+    thread_2 = Thread(target=thread.search_words())
 
     print('Поток стартует!')
     thread_1.start()
     print('Поток завершил работу!')
     thread_1.join()
+    print('Поток стартует!')
+    thread_2.start()
+    print('Поток завершил работу!')
+    thread_2.join()
