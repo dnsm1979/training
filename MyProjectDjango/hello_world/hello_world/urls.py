@@ -1,5 +1,5 @@
 from django.urls import path
-from hello import views
+from multiplication_table import views
 
 urlpatterns = [
     path('', views.index, name='home'),

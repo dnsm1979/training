@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "hello_world",
     "hello",
+    "multiplication_table",
 ]
 
 MIDDLEWARE = [
