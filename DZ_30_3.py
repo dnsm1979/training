@@ -2,11 +2,11 @@ from threading import Thread
 import shutil
 from os import path
 
+
 class AllThread:
     def __init__(self):
-        self.copy_path = input('Введите путь к исходному каталогу: ')
-        self.target_path =input('Введите пить к каталогу для переноса дириктории: ')
-
+        self.copy_path = input("Введите путь к исходному каталогу: ")
+        self.target_path = input("Введите пить к каталогу для переноса дириктории: ")
 
     def copy_dirictory(self):
         source_path = self.copy_path
@@ -22,9 +22,9 @@ if __name__ == "__main__":
     thread = AllThread()
     thread_1 = Thread(target=thread.copy_dirictory())
 
-    print('Поток стартует!')
+    print("Поток стартует!")
     thread_1.start()
-    print('Поток завершил работу!')
+    print("Поток завершил работу!")
     thread_1.join()
 
 # C:\Users\dnsm1\AppData\Local\Programs\Python\Python39\python.exe C:\Users\dnsm1\PycharmProjects\training\DZ_30_3.py
