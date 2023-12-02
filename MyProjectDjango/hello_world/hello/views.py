@@ -1,4 +1,5 @@
 from django.http import HttpResponse
-
+from datetime import datetime
 def index(request):
-    return HttpResponse("Hello")
+    current_datetime = datetime.now()
+    return HttpResponse(current_datetime)
