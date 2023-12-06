@@ -1,6 +1,7 @@
 from django.urls import path, include
-
+from . import views
 
 urlpatterns = [
-    path('', include('multiplication_table.urls')),
+    path('', views.index)
+
 ]
