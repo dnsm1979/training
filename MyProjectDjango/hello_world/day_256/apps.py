@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MultiplicationTableConfig(AppConfig):
+class Day256Config(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "multiplication_table"
+    name = "day_256"

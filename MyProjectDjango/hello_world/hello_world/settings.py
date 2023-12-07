@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "hello_world",
     "hello",
     "multiplication_table",
+    "day_256",
 ]
 
 MIDDLEWARE = [
