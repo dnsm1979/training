@@ -4,8 +4,8 @@ from os import path
 
 class AllThread:
     def __init__(self):
-        self.copy_path = [input('Введите путь к исходному каталогу: ')]
-        self.target_path =[input('Введите пить к каталогу для переноса дириктории: ')]
+        self.copy_path = input('Введите путь к исходному каталогу: ')
+        self.target_path =input('Введите пить к каталогу для переноса дириктории: ')
 
 
     def copy_dirictory(self):
