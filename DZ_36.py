@@ -1,37 +1,36 @@
 import threading
 import time
 import requests
-from star_wars_starship import StarWarsDataBase
+from SW_db import StarWarsDataBase
 import logging
 
-logger = logging.getLogger('main_db')
+logger = logging.getLogger('SW_db_log')
 logging.basicConfig(level='INFO')
 
-lock = threading.Lock()
+semaphore = threading.Semaphore(1)
 
-def insert_human_to_db(human):
-    logger.info(f'Insert {human["name"]} to db...')
+def insert_starship_to_db(starship):
+    logger.info(f'Insert {starship["name"]} to db...')
     try:
-        lock.acquire(True)
-        db.insert_human_tu_table(human)
-        logger.info(f'Insert {human["name"]} to db... SUCCESS')
+        semaphore.acquire(True)
+        db.insert_starship_tu_table(starship)
+        logger.info(f'Insert {starship["name"]} to db... SUCCESS')
     finally:
-        lock.release()
-        # logger.info(f'Insert {human["name"]} to db... ERROR')
+        semaphore.release()
 
-def get_human(human_ig):
-    response = requests.get(f'https://swapi.dev/api/people/{human_ig}/')
-    insert_human_to_db(response.json())
+def get_starship(id):
+    response = requests.get(f'https://swapi.dev/api/starships/{id}/')
+    insert_starship_to_db(response.json())
 
 def consequents_loading():
     start = time.time()
     for i in range(1, 10):
         try:
-            logger.info(f'Getting {i} human...')
-            get_human(i)
-            logger.info(f'Getting {i} numan... SUCCESS')
+            logger.info(f'Getting {i} starship...')
+            get_starship(i)
+            logger.info(f'Getting {i} starship... SUCCESS')
         except BaseException:
-            logger.info(f'Getting {i} human... ERROR')
+            logger.info(f'Getting {i} starship... ERROR')
     logger.info(f'Consequent loading takes {time.time() - start} sec')
 
 
@@ -39,8 +38,8 @@ def parallel_loading():
     start = time.time()
     tasks = []
     for i in range(1, 10):
-        task = threading.Thread(target=get_human, args=(i, ))
-        task.name = f'Getting {i} human...'
+        task = threading.Thread(target=get_starship, args=(i, ))
+        task.name = f'Getting {i} starship...'
         logger.info(task.name)
         task.start()
         tasks.append((task))
