@@ -1,0 +1,19 @@
+aside{
+    float: left;
+    background: #181818;
+    width: 20%;
+    padding: 3.5%;
+    height: 100vn;
+    color: white;
+    border-right: 5px solid #4d4d4d;
+}
+aside img{
+    width: 80px;
+    float: left;
+}
+aside .logo{
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    bottom: 5px;
+}
