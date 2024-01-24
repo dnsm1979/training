@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    'main',
+    "main",
 ]
 
 MIDDLEWARE = [
@@ -125,7 +124,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
-
-    BASE_DIR / 'static',
-    'var/www/static/',
+    BASE_DIR / "static",
+    "var/www/static/",
 ]

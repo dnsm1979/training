@@ -14,17 +14,17 @@
 <body>
 
 <aside>
-    <img src="{%static 'main/img/logo.png' %}" alt="logo">
-    <span class="logo">Avengers</span>
+    <img src="{%static 'main/img/logo3.gif' %}" alt="logo">
+    <span class="logo">Кофемания</span>
     <h3>Навигация</h3>
     <ul>
-        <a href=""><li><i class="fas fa-home"></i>Главная</li></a>
-        <a href=""><i class="fas fa-address-card"></i>Про нас</li></a>
-        <a href=""><li><i class="fas fa-paper-plane"></i>Контакты</li></a>
+        <a href="{% url 'index' %}"><li><i class="fas fa-home"></i>Главная</li></a>
+        <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i>Про нас</li></a>
+        <a href="{% url 'contacts' %}"><li><i class="fas fa-paper-plane"></i>Контакты</li></a>
     </ul>
 </aside>
-
+<main>
     {% block content %}{% endblock %}
-
+</main>
 </body>
 </html>

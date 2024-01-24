@@ -1,0 +1,52 @@
+
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="features">
+        <h1>Контакты</h1>
+        <p>
+            <ul>
+                <li>Адрес нашего офиса
+                info@coffeemania.ru
+                121609, Москва, ул. Осенняя, д. 11
+                +7 (495) 781 16-90</li>
+                <li>Служба поддержки
+                feedback@coffeemania.ru
+                +7 (800) 222 16-24</li>
+                <li>Интернет-магазин
+                +7 (800) 222 16-24</li>
+                <li>По вопросам трудоустройства
+                Если Вы хотите стать частью нашей команды, то Вы можете заполнить анкету соискателя
+                Для предложений поставщиков
+                zakaz@coffeemania.ru</li>
+                <li>Для прессы
+                pr@coffeemania.ru
+                +7 (495) 781 16-90
+                факс: +7 (495) 781 16-91</li>
+                <li>По вопросам размещения рекламы и печатных изданий в ресторанах
+                ed@pressdirect.ru
+                +7 (495) 740 23-36 pressdirect.ru</li>
+                <li>По вопросам партнёрства и сотрудничества
+                partners@coffeemania.ru</li>
+                <li>По вопросам размещения предложений в Клубе «Кофемания»
+     loyalty@coffeemania.ru</li>
+            </ul>
+
+
+
+
+
+
+
+
+
+
+        </p>
+        <a href="{% url 'index' %}"><button class="btn btn-warning">На главную</button></a>
+
+
+    </div>
+{% endblock %}
