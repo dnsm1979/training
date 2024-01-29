@@ -1,0 +1,20 @@
+
+
+{% extends 'main/layout.html' %}
+
+{% block title %}Добовление записи{% endblock %}
+{% block content %}
+    <div class="features">
+        <h1>Добавить запись</h1>
+        <form method="post" action="/news/check">
+            <input type="text" placeholder="Название статьи" class="form-control"><br>
+            <input type="text" placeholder="Анонс статьи" class="form-control"><br>
+            <textarea class="form-control" placeholder="Текст статьи"></textarea><br>
+            <input type="date" class="form-control"><br>
+            <input type="time" class="form-control"><br>
+            <button class="btn btn-success" type="submit">Добавить статью</button>
+        </form>
+
+
+    </div>
+{% endblock %}

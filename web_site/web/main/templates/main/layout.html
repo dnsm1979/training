@@ -18,9 +18,12 @@
     <span class="logo">Кофемания</span>
     <h3>Навигация</h3>
     <ul>
-        <a href="{% url 'index' %}"><li><i class="fas fa-home"></i> Главная</li></a>
-        <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i> Про нас</li></a>
-        <a href="{% url 'contacts' %}"><li><i class="fas fa-paper-plane"></i> Контакты</li></a>
+        <a href="{% url 'index' %}"><li><i class="fas fa-home"></i>  Главная</li></a>
+        <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i>  Про нас</li></a>
+        <a href="{% url 'news_home' %}"><li><i class="fas fa-newspaper"></i>  Новости</li></a>
+        <a href="{% url 'contacts' %}"><li><i class="fas fa-paper-plane"></i>  Контакты</li></a>
+        <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>  Добавить запись</button></li></a>
+
     </ul>
 </aside>
 <main>

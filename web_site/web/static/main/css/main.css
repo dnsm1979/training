@@ -69,3 +69,17 @@ main .footer  {
     text-align: center;
     width: 75%;
     }
+
+.alert-warning{
+    float: left;
+    width: 400px;
+    clear: both;
+    margin: 20px 30%;
+    text-align: center;
+}
+
+form {
+    margin-left: 28%;
+    width: 500px;
+    margin-top: 50px;
+}
