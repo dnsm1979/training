@@ -2,7 +2,11 @@ from django.shortcuts import render
 
 
 def index(request):
-    data = {'title': 'Главная страница', 'values': ['hi', 'world', 'cars'], 'car': {'car': 'bmw', 'model': 'm5', 'power': '600'}}
+    data = {
+        "title": "Главная страница",
+        "values": ["hi", "world", "cars"],
+        "car": {"car": "bmw", "model": "m5", "power": "600"},
+    }
     return render(request, "main/index.html", data)
 
 

@@ -1,5 +1,8 @@
 import psycopg2
-conn = psycopg2.connect(dbname="data", host="Localhost", user='postgres', password='1', port='5432')
+
+conn = psycopg2.connect(
+    dbname="data", host="Localhost", user="postgres", password="1", port="5432"
+)
 conn.autocommit = True
 
 
@@ -27,11 +30,17 @@ conn.autocommit = True
 # cursor.execute(''' SELECT COUNT(airport_code) AS COUNT_AIRPOTS FROM airports_data; ''')
 # print(cursor.fetchall())
 cursor = conn.cursor()
+
+
 def menu():
-    choise = int(input('Выберете пункт меню! /n'
-          '1-Добовление студента /n'
-          '2-Добавление оценки /n'
-          '3-Выйти из программы -->'))
+    choise = int(
+        input(
+            "Выберете пункт меню! /n"
+            "1-Добовление студента /n"
+            "2-Добавление оценки /n"
+            "3-Выйти из программы -->"
+        )
+    )
     if choise == 1:
         return add_student()
     elif choise == 2:
@@ -39,26 +48,28 @@ def menu():
     elif choise == 3:
         return
     else:
-        print('Неверный выбор!')
+        print("Неверный выбор!")
         return menu()
 
 
-
 def add_student():
-
-    name = input('Введите имя:  ')
-    surname = input('Введите фамилию:  ')
-    cursor.execute("INSERT INTO students(FirstName,LastName) VALUES(%s, %s)", (name, surname))
-    print('Данные дабавлены!')
+    name = input("Введите имя:  ")
+    surname = input("Введите фамилию:  ")
+    cursor.execute(
+        "INSERT INTO students(FirstName,LastName) VALUES(%s, %s)", (name, surname)
+    )
+    print("Данные дабавлены!")
 
 
 def add_grades():
-
-    id_student = input('Введите id:  ')
-    Subject = input('Введите предмет:  ')
-    Grade = input('Введите оценку:  ')
-    cursor.execute("INSERT INTO grades(Subject,Grade) VALUES(%s, %s) WHERE ID(%s)", (Subject, Grade, id_student))
-    print('Данные дабавлены!')
+    id_student = input("Введите id:  ")
+    Subject = input("Введите предмет:  ")
+    Grade = input("Введите оценку:  ")
+    cursor.execute(
+        "INSERT INTO grades(Subject,Grade) VALUES(%s, %s) WHERE ID(%s)",
+        (Subject, Grade, id_student),
+    )
+    print("Данные дабавлены!")
 
 
 conn.close()
@@ -69,5 +80,3 @@ while True:
     menu()
 # conn.close()
 # cursor.close()
-
-

@@ -1,4 +1,3 @@
-
 # def division(nam_1, nam_2):
 #     # if nam_2 == 0:
 #     #     return 'ошибка'
@@ -41,9 +40,7 @@ import re
 # sentence = 'hello world '
 # res = re.match('hello', sentence)
 # print(res.group())
-text = 'Andrey@gamil.com Andrey@gmail- com'
-res = re.findall(r'\b\w{4,12}@\w{4,8}\.\w{2,3}\b', text)
+text = "Andrey@gamil.com Andrey@gmail- com"
+res = re.findall(r"\b\w{4,12}@\w{4,8}\.\w{2,3}\b", text)
 
 print(res)
-
-
