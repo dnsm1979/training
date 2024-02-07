@@ -4,15 +4,112 @@
   <head>
     <title>Django blog</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="STYLE/style_dz7.css">
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <h1><a href="{% url 'home' %}">Django blog</a></h1>
+      <header class="header">
+        <div class="header__conteiner">
+            <a href="{% url 'home' %}">
+                <img class="header_logo" src="{% static 'IMG/icons8-дизайн-96.png' %}" alt="logo">
+                </a>
+                <p class="header__name"><img src="{% static 'IMG/name.png' %}" alt="name"></p>
+
+        </div>
+        <p class="header__search-btn_prg"><button class="header__search-btn"></button></p>
+        <div class="header__right">
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                <li class="header__nav-etem">
+                    <a class="header__nav-link" href="{% url 'home' %}">Мой блог</a>
+                </li>
+                <li class="header__nav-etem">
+                    <a class="header__nav-link" href="#">Услуги</a>
+                </li>
+                <li class="header__nav-etem">
+                    <a class="header__nav-link" href="#">Галерея</a>
+                </li>
+                <li class="header__nav-etem">
+                    <a class="header__nav-link" href="#">Контакты</a>
+                </li>
+            </ul>
+            </nav>
+         </div>
+
     </header>
+<!--    <header>-->
+<!--      <h1><a href="{% url 'home' %}">Django blog</a></h1>-->
+<!--    </header>-->
     <div>
       {% block content %}
       {% endblock content %}
     </div>
-  </body>
+  <footer class="footer">
+      <div class="footer__left"><a href="#">
+        <img class="footer__logo" src="{% static 'IMG/icons_up.png' %}" alt="logo">
+        </a>
+        <p class="footer__left_text">
+        </p>
+      </div>
+      <div class="footer__center" id="contact">
+        <h2 class="fooer_center_heading">Контакты</h2>
+        <ul class="footer__center_list">
+          <li class="footer__center_list-item">
+            <a href="tel:+7(999)-222-23-70" class="footer__center_link">+7(999)-222-23-70</a>
+          </li>
+          <li class="footer__center_list-item">
+            <a href="tel:+7(999)-222-23-77" class="footer__center_link">+7(999)-222-23-77</a>
+          </li>
+          <li class="footer__center_list-item">
+            <a href="mailto:cheese@mail.ru" class="footer_center_link">desing@mail.ru</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__right">
+        <form method="get" class="footer__form">
+          <input type="email" placeholder="Email:">
+          <div>
+          <input type="checkbox" id="confirm">
+          <label for="confirm">Даю согласие на рассылку</label>
+          <button type="submit">Подписаться на рассылку</button>
+        </div>
+        </form>
+        <script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-size="l" data-services="vkontakte,telegram,twitter,whatsapp"></div>
+      </div>
+
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+  autoplay: {
+    delay: 3000,
+  },
+
+  // If we need pagination
+//   pagination: {
+//     el: '.swiper-pagination',
+//   },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+</script>
+
+
+</body>
 </html>
