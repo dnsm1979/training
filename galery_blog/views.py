@@ -14,4 +14,4 @@ def upload_photo(request):
 
 def photo_detail(request, pk):
     photo = get_object_or_404(Photo, pk=pk)
-    return render(request, 'tt_blog/photo_detail.html', {'photo': photo})
+    return render(request, 'galery_blog/photo_detail.html', {'photo': photo})
