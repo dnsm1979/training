@@ -1,6 +1,11 @@
+<!-- templates/home.html -->
 {% extends 'blog/base.html' %}
+
 {% block content %}
-<h2>Посмотреть фото</h2>
-<p>{{ photo.title }}</p>
-<img src="{{ photo.image.url }}" alt="{{ photo.title }}">
-{% endblock %}
+  {% for photo in object_list %}
+    <div class="photo-entry">
+      <img class="{% url 'photo_detail' photo.pk %}" {{ photo.image.url }}>
+      <p>{{ photo.title }}</p>
+    </div>
+  {% endfor %}
+{% endblock content %}
