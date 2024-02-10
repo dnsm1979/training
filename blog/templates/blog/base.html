@@ -18,7 +18,9 @@
                 <p class="header__name"><img src="{% static 'IMG/name.png' %}" alt="name"></p>
 
         </div>
-        <p class="header__search-btn_prg"><button class="header__search-btn"></button></p>
+            <form action="{% url 'search' %}" method="get">
+                <input name="q" type="text" placeholder="Search...">
+            </form>
         <div class="header__right">
             <nav class="header__nav">
                 <ul class="header__nav-list">
@@ -32,7 +34,7 @@
                     <a class="header__nav-link" href="{% url 'galery' %}">Галерея</a>
                 </li>
                 <li class="header__nav-etem">
-                    <a class="header__nav-link" href="#">Контакты</a>
+                    <a class="header__nav-link" href="{% url 'personal_account' %}">Личный кабинет</a>
                 </li>
             </ul>
             </nav>

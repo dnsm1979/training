@@ -14,7 +14,7 @@ def upload_photo(request):
             form.save()
         else:
             form = PhotoForm()
-    return render(request, 'upload_photo.html', {'form': form})
+    return render(request, 'galery_blog/upload_photo.html', {'form': form})
 
 def photo_detail(request, pk):
     photo = get_object_or_404(Photo, pk=pk)
