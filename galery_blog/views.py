@@ -3,7 +3,11 @@ from .forms import PhotoForm
 from .models import Photo
 
 
+def galery(request):
+    photos = Photo.objects.all()
+    return render(request, 'galery_blog/galery.html', {'photos': photos})
 def upload_photo(request):
+    form = PhotoForm()
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
