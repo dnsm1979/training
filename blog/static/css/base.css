@@ -177,6 +177,12 @@ a{
 .post-entry h2 a:hover {
   color: red;
 }
+/** images */
+.galery_img{
+    width: 200px;
+    height: 200px;
+}
+
 
 .footer {
     display: flex;

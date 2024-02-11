@@ -4,8 +4,8 @@
 {% block content %}
   {% for photo in object_list %}
     <div class="photo-entry">
-      <img class="{% url 'photo_detail' photo.pk %}" {{ photo.image.url }}>
-      <p>{{ photo.title }}</p>
+      <img class="galery_img" src="{{ photo.image.url }}" alt="{{ photo.title }}">
+        <a href="{{ photo.image.url }}"><p>{{ photo.title }}</p></a>
     </div>
   {% endfor %}
 {% endblock content %}

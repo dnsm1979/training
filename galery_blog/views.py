@@ -1,11 +1,16 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+
 from .forms import PhotoForm
 from .models import Photo
 
 
-def galery(request):
-    photos = Photo.objects.all()
-    return render(request, 'galery_blog/galery.html', {'photos': photos})
+class GaleryListView(ListView):
+    model = Photo
+    template_name = 'galery_blog/galery.html'
+# def galery(request):
+#     photo = Photo.objects.all()
+#     return render(request, 'galery_blog/galery.html', {'photo': photo})
 def upload_photo(request):
     form = PhotoForm()
     if request.method == 'POST':
