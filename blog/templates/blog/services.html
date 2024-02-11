@@ -1,0 +1,40 @@
+<!-- templates/home.html -->
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="about" id="about">
+  <div class="about__conteiner">
+    <h1 class="about__heading">Услуги</h1>
+    <p class="about__descr">
+    </p>
+    <div class="about-us_bottom">
+        <div class="about-us__bottom_left">
+          <h3 class="uslugi__bottom" style="text-align: center;">3D - Моделирование</h3>
+            <img class="about-us__botttom_right_img" src="{% static 'IMG/3d_model.jpg' %}" alt="picture">
+
+            <p class="about-us__bottom_left_discr"> Проектирование и построение объемных моделей разной сложности и сферы деятельности.
+            </p>
+
+        </div>
+        <div class="about-us__bottom_right">
+          <div class="about-us__bottom_right_top">
+            <h3 class="uslugi__bottom">Дизайн интерьеров</h3>
+{#            <img class="about-us__botttom_right_img" src="{% static 'IMG/img-07-min.jpg' %}" alt="picture">
+            <p class="about-us__bottom_right_descr">Дизайн интерьера квартир, коттеджей, ресторанов и офисов. Авторский надзор и комплектация объектов
+            </p>
+          </div>
+          <div class="about-us__bottom_right_bottom">
+            <h3 class="uslugi__bottom">Декорирование</h3>
+              <img class="about-us__botttom_right_img" src="{% static 'IMG/img-06-min.jpg' %}" alt="picture">
+              <p class="about-us__bottom_right_descr">Декорирование позволяет создавать яркие и неповторимые интерьеры без серьезного «архитектурного вмешательства».
+              </p>
+          </div>
+        </div>
+    </div>
+    <form action="{% url 'forma' %}" target="_blank">
+    <button class="about-us__bottom_left_btm">Заказать услугу</button></form>
+  </div>
+
+</section>
+{% endblock content %}

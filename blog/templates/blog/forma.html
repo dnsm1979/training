@@ -1,0 +1,34 @@
+<!-- templates/home.html -->
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="content">
+        <div class="title"><span><h2> Форма оформления заказа </h2></span></div>
+        <p></p>
+        <div class="form"><form action="desing@mail.ru" method= "GET" name="my_form">
+          <label><span class="fio"> ФИО:</span> <br />
+          <input type="search" class="guest"/></label> <p></p>
+          <label><span class="email"> E-mail:</span><br />
+          <input type="email" class="guest"/></label><p></p>
+          <label><span class="phone"> Телефон:</span><br />
+          <input type="search" class="guest"/></label><p></p>
+          <span class="goods"> Наименование услуги:</span><br />
+          <select name="goods" class="guest">
+            <option value="Товар 1">3Д-моделирование</option>
+             <option value="Товар 2">Дизайн интерьера</option>
+             <option value="Товар 3">Декорирование</option>
+            </select><p></p>
+            <label><span class="number"> Количество:</span><br />
+            <input type="search" class="guest"/></label><p></p>
+            <label><span class="date"> Дата начала работ:</span><br />
+            <input type="date" class="guest"/></label><p></p>
+            <!--или <label><span class="date"> Дата доставки:</span>
+             <input type="date"/></label>-->
+            <div class="bottom">
+            <input type="submit" class="bottom1" value="Отправить"/>
+            <input type="submit" class="bottom2" value="Очистить"/>
+
+          </div> </form>
+        </div>
+    </div>
+{% endblock content %}

@@ -25,3 +25,11 @@ class BlogSearchView(ListView):
 class BlogPersonalView(ListView):
     model = Post
     template_name = 'blog/personal_account.html'
+
+class BlogServicesView(ListView):
+    model = Post
+    template_name = 'blog/services.html'
+
+class BlogFormaView(ListView):
+    model = Post
+    template_name = 'blog/forma.html'
