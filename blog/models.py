@@ -1,8 +1,12 @@
 from django.db import models
 
+
 class Post(models.Model):
     title = models.CharField("Заголовок", max_length=250)
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
+    author = models.ForeignKey(
+        "auth.User",
+        on_delete=models.CASCADE,
+    )
     body = models.TextField("Статья")
     date = models.DateTimeField("Дата публикации")
 
