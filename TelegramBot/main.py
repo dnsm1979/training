@@ -21,22 +21,6 @@ bot = telebot.TeleBot("6636364771:AAH0UK8wIMPfLsYIxGEgWjtHd1S0sUZrKGI")
 
 
 
-@bot.message_handler()
-def get_text_messages(message):
-    x = message.text.lower()
-    if x == "писатель":
-        bot.send_message(message.chat.id, random.choice(writer))
-    elif x == "поэт":
-        bot.send_message(message.chat.id, random.choice(poet))
-    elif x == "книга":
-        bot.send_message(message.chat.id, random.choice(book))
-    elif x == "монолог":
-        bot.send_message(message.chat.id, random.choice(monologue))
-
-    elif x in dict_bot:
-        bot.send_message(message.chat.id, dict_bot[x])
-    else:
-        bot.send_message(message.chat.id, "Я вас не понимаю!")
 
 
 
@@ -59,12 +43,6 @@ def main(message):
     )
 
 
-@bot.message_handler()
-def privet(message):
-
-    x = message.text.lower()
-    if x in dict_bot:
-        bot.send_message(message.chat.id, dict_bot[x])
 
 
 @bot.message_handler(content_types=["photo"])
@@ -84,6 +62,24 @@ def photos(message):
 def callback_message(callback):
     if callback.data == "cancel_checkin":
         bot.delete_message(callback.message.chat.id, callback.message.message_id - 1)
+
+
+@bot.message_handler()
+def get_text_messages(message):
+    x = message.text.lower()
+    if x == "писатель":
+        bot.send_message(message.chat.id, random.choice(writer))
+    elif x == "поэт":
+        bot.send_message(message.chat.id, random.choice(poet))
+    elif x == "книга":
+        bot.send_message(message.chat.id, random.choice(book))
+    elif x == "монолог":
+        bot.send_message(message.chat.id, random.choice(monologue))
+
+    elif x in dict_bot:
+        bot.send_message(message.chat.id, dict_bot[x])
+    else:
+        bot.send_message(message.chat.id, "Я вас не понимаю!")
 
 
 bot.polling(none_stop=True)
