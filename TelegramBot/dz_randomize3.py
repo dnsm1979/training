@@ -10,17 +10,15 @@ API_TOKEN = 'cadbf00e-3f47-474b-9da9-bbf17a4df82a'
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Привет! Выберете пожалуйста 1-орел, 2-решка!')
-    bot.send_message(
-        message.chat.id,
-        "Введите 1 или 2")
-    bot.register_next_step_handler(message, user_number)
+    bot.send_message(message.chat.id, 'Привет! ')
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton("Бросаем кости!", callback_data="start"))
+    bot.send_message(message.chat.id, "Сыграем в кости!", reply_markup=markup)
 
-def user_number(message):
-    user_number = message.text.strip()
-
+@bot.callback_query_handler(func=lambda callback: True)
+def callback(call):
     request_data = {'jsonrpc': '2.0','method': 'generateIntegers','params': {
-        'apiKey': API_TOKEN,'min': 1,'max': 2,'n': 1,},'id': 1,
+        'apiKey': API_TOKEN,'min': 1,'max': 6,'n': 4,},'id': 1,
                     }
     encoded_data = dumps(request_data)
     headers = {'Content-Type': 'application/json-rpc',}
@@ -30,11 +28,16 @@ def user_number(message):
     connection.request('GET', '/json-rpc/1/invoke', encoded_data, headers)
     response = connection.getresponse()
     response_data = loads(response.read().decode())
-    result = response_data["result"]["random"]["data"][0]
-    if result == int(user_number):
-        bot.reply_to(message, f'Выпал {result}, Вы победили!')
+    result1 = response_data["result"]["random"]["data"][0]
+    result2 = response_data["result"]["random"]["data"][1]
+    result3 = response_data["result"]["random"]["data"][2]
+    result4 = response_data["result"]["random"]["data"][3]
+    if result1 + result2 == result3 + result4:
+        bot.send_message(call.message.chat.id, f'{result1}+{result2} против {result3}+{result4}: Розыгрыш!')
+    elif result1 + result2 > result3 + result4:
+        bot.send_message(call.message.chat.id, f'{result1}+{result2} против {result3}+{result4}: Вы проиграли!')
     else:
-        bot.reply_to(message, f'Выпал {result}, Вы проиграли!')
+        bot.send_message(call.message.chat.id, f'{result1}+{result2} против {result3}+{result4}: Вы выйграли!')
 
     # markup = types.InlineKeyboardMarkup()
     # button1 = types.InlineKeyboardButton("Играем!", callback_data=start)
