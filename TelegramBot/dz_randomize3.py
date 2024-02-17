@@ -39,10 +39,7 @@ def callback(call):
     bot.send_message(call.message.chat.id, 'Теперь кидаю я!')
     time.sleep(3)
     bot.send_message(call.message.chat.id, f'Мой результат: {ls_score[2]}+{ls_score[3]}')
-    # result1 = response_data["result"]["random"]["data"][0]
-    # result2 = response_data["result"]["random"]["data"][1]
-    # result3 = response_data["result"]["random"]["data"][2]
-    # result4 = response_data["result"]["random"]["data"][3]
+
     if ls_score[0] + ls_score[1] == ls_score[2] + ls_score[3]:
         bot.send_message(call.message.chat.id, f'{ls_score[0]}+{ls_score[1]} против {ls_score[2]}+{ls_score[3]}: Розыгрыш!')
     elif ls_score[0] + ls_score[1] < ls_score[2] + ls_score[3]:
@@ -51,18 +48,15 @@ def callback(call):
         bot.send_message(call.message.chat.id, f'{ls_score[0]}+{ls_score[1]} против {ls_score[2]}+{ls_score[3]}: Вы выйграли!')
     ls_score.clear()
     markup = types.InlineKeyboardMarkup()
-    button1 = types.InlineKeyboardButton("Играем!", callback_data="start")
-    button2 = types.InlineKeyboardButton("Отмена!", callback_data="stop")
-    markup.add(button1, button2)
+    button1 = types.InlineKeyboardButton("Играем!", callback_data="st")
+
+    markup.add(button1)
     bot.send_message(call.message.chat.id, "Сыграем ещё?", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(call):
-    if callback.data == "stop":
-        bot.send_message(call.message.chat.id, f'До свидания!')
+    return start
 
-    elif callback.data == "start":
-        bot.send_message(call.message.chat.id, f'Отлично!')
 
 
 
