@@ -30,30 +30,3 @@ class ProductOwnership(BaseModel):
 if __name__ == '__main__':
     db.create_tables([Product, ProductOwnership])
 
-# db = SqliteDatabase('data.db')
-#
-# class BaseModel(Model):
-#     class Meta:
-#         database = db
-#
-# class User(BaseModel):
-#     class Meta:
-#         db_table = 'Users'
-#
-#     tg_id = IntegerField()
-#     name = CharField(max_length=50)
-#     mode = CharField(max_length=50)
-#     money = FloatField()
-#
-# class Order(BaseModel):
-#     class Meta:
-#         db_table = 'Orders'
-#
-#     custumer = ForeignKeyField(User)
-#     executor = ForeignKeyField(User)
-#     price = FloatField()
-#     comment = TextField()
-#
-#
-# if __name__ == '__main__':
-#     db.create_tables([User, Order])

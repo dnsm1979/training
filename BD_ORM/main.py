@@ -13,42 +13,45 @@ def add_product_ownership(user, product, purchase_data):
         product=product,
         purchase_data=purchase_data
     ).save()
-#
-# user = User.get(id=1)
-# print(user.name)
 
-# users = [x for x in User.select().where(User.money > 1000)]
-# for user in users:
-#     print(f'{user.tg_id} | {user.name}')
-
-# cust = User.get(id=1)
-# exec = User.get(id=2)
-#
-# Order(
-#     custumer=cust,
-#     executor=exec,
-#     price=400,
-#     comment='Нужно провети рекламную компанию'
-# ).save()
-
-# executor = User.get(name='Anton')
-# orders = [x for x in Order.select().where(Order.executor == executor)]
-# print(orders)
+def show_product():
+    print('Катую онформацию получить: \n1-Информаю о всех продуктах\n2-Информацию о конкретном продукте')
+    choice = input('Введите выбор: ')
+    if choice == '1':
+        print(f'Ваш список продуктов:')
+        for x in Product:
+            print(f' Название: {x.name}, цена: {x.price}, описание: {x.description}')
+    elif choice == '2':
+        for x in Product:
+            if x.name == input('Введите название продукта: '):
+                print(f'Название: {x.name}, цена: {x.price}, описание: {x.description}')
+            else:
+                print('Продукта нет в списке!')
+            return
+    else:
+        print('Не коретный выбор!')
+    return
 
 if __name__ == '__main__':
-    user = ProductOwnership.get(id=2)
-    products = [x for x in Product.select()]
-    for product in products:
-        print(f'{product.product_id} | {product.username} | {user.name} | {product.price} | {product.description}')
 
+    while True:
+        print(f'Выберете пункт меню:\n1-Добавить продукт\n2-Добавить информацию о покупке\n3-Получить информацию')
+        menu = input('Выберете пункт: ')
+        if menu == '1':
+            add_product(input('Введите имя: '), input('Введите название: '), input('Введите цену: '), input('Введите описание: '))
+            print('Продукт добавлен!')
+        elif menu == '2':
+            add_product_ownership(input('Введите имя: '), input('Введите название: '), input('Введите дату покупки: '))
+            print('Информация добавлена!')
+        elif menu == '3':
+            show_product()
 
-    # product = ProductOwnership.get(user='Anton')
-    # products = [x for x in Product.select().where(Product.product_id == product)]
-    # print(products)
+        else:
+            print('Не коретный выбор!')
 
-    # add_product('Anton', 'Anton', 1000, 'Anton is a')
-    # add_product('Alex', 'Alex', 1500, 'Alex is a')
-    # add_product('Pit', 'Pit', 1700, 'Pit is a')
-    # add_product_ownership('Anton', 'TOP', 2024-2-19)
-    # add_product_ownership('Alex', 'COX', 2024-2-10)
-    # add_product_ownership('Pit', 'POT', 2024-2-1)
+    # add_product('Anton', 'ipad', 1000, 'Планшет')
+    # add_product('Alex', 'iPhone Max', 1500, 'Топовый смартфон')
+    # add_product('Piter', 'Samsung Fold 5', 1700, 'Раскладной смартфон')
+    # add_product_ownership('Anton', 'планшет', '2024-02-19')
+    # add_product_ownership('Alex', 'смартфон', '2024-02-10')
+    # add_product_ownership('Piter', 'смартфон', '2024-02-01')
