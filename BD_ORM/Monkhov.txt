@@ -1,0 +1,78 @@
+main
+
+# Product.create(name='APhone', price=100, stock=1)
+# Product.create(name='APhone2', price=120, stock=3)
+# Product.create(name='aPhone3', price=150, stock=20)
+
+# products = Product.select().where(Product.stock >= 10)
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# products = Product.select().where(Product.price >= 200)
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# prod = Product.update(price = 110).where(Product.id == 1).execute()
+# products = Product.select()
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# prod = Product.delete().where(Product.stock == 2).execute()
+# products = Product.select()
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# products = Product.select().where((Product.price >= 100) & (Product.price <= 150))
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+# products = Product.select().where(Product.name ** 'A%')
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+
+
+models
+
+
+from peewee import *
+
+db = SqliteDatabase('14.db')
+
+
+class BaseModel(Model):
+    class Meta:
+        database = db
+
+
+class User(BaseModel):
+    id = PrimaryKeyField(unique=True)
+    username = CharField(unique=True)
+    age = IntegerField()
+    email = CharField(unique=True)
+    class Meta:
+        db_table = 'Users'
+
+class Account(BaseModel):
+    id = PrimaryKeyField()
+    nickname = CharField(unique=True)
+    level = IntegerField()
+
+    class Meta:
+        db_table = 'Accounts'
+
+class Product(BaseModel):
+    id = PrimaryKeyField()
+    name = CharField(unique=True)
+    price = IntegerField()
+    stock = IntegerField()
+
+    class Meta:
+        db_table = 'Product'
+
+
+if __name__ == '__main__':
+    db.create_tables([User, Account, Product])
