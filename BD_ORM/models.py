@@ -1,32 +1,38 @@
 from peewee import *
 
+db = SqliteDatabase('15.db')
 
-db = SqliteDatabase('Product_data.db')
 
 class BaseModel(Model):
     class Meta:
         database = db
 
+
+class User(BaseModel):
+    id = PrimaryKeyField(unique=True)
+    username = CharField(unique=True)
+    age = IntegerField()
+    email = CharField(unique=True)
+    class Meta:
+        db_table = 'Users'
+
+class Account(BaseModel):
+    id = PrimaryKeyField()
+    nickname = CharField(unique=True)
+    level = IntegerField()
+
+    class Meta:
+        db_table = 'Accounts'
+
 class Product(BaseModel):
+    id = PrimaryKeyField()
+    name = CharField(unique=True)
+    price = IntegerField()
+    stock = IntegerField()
+
     class Meta:
         db_table = 'Products'
 
-    product_id = PrimaryKeyField()
-    username = CharField(max_length=100)
-    name = CharField(max_length=100)
-    price = FloatField()
-    description = TextField()
-
-class ProductOwnership(BaseModel):
-    class Meta:
-        db_table = 'ProductOwnerships'
-
-    ownership_id = PrimaryKeyField()
-    user = ForeignKeyField(Product)
-    product = ForeignKeyField(Product)
-    purchase_data = DateField()
-
 
 if __name__ == '__main__':
-    db.create_tables([Product, ProductOwnership])
-
+    db.create_tables([User, Account, Product])

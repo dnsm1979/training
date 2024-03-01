@@ -1,57 +1,89 @@
 from models import *
-def add_product(username, name, price, description):
-    Product(
-        username=username,
-        name=name,
-        price=price,
-        description=description
-    ).save()
 
-def add_product_ownership(user, product, purchase_data):
-    ProductOwnership(
-        user=user,
-        product=product,
-        purchase_data=purchase_data
-    ).save()
 
-def show_product():
-    print('Катую онформацию получить: \n1-Информаю о всех продуктах\n2-Информацию о конкретном продукте')
-    choice = input('Введите выбор: ')
-    if choice == '1':
-        print(f'Ваш список продуктов:')
-        for x in Product:
-            print(f' Название: {x.name}, цена: {x.price}, описание: {x.description}')
-    elif choice == '2':
-        for x in Product:
-            if x.name == input('Введите название продукта: '):
-                print(f'Название: {x.name}, цена: {x.price}, описание: {x.description}')
-            else:
-                print('Продукта нет в списке!')
-            return
-    else:
-        print('Не коретный выбор!')
-    return
 
-if __name__ == '__main__':
+# new_user = User(username='new_user', email='ychag@example.')
+# new_user.save()
 
-    while True:
-        print(f'Выберете пункт меню:\n1-Добавить продукт\n2-Добавить информацию о покупке\n3-Получить информацию')
-        menu = input('Выберете пункт: ')
-        if menu == '1':
-            add_product(input('Введите имя: '), input('Введите название: '), input('Введите цену: '), input('Введите описание: '))
-            print('Продукт добавлен!')
-        elif menu == '2':
-            add_product_ownership(input('Введите имя: '), input('Введите название: '), input('Введите дату покупки: '))
-            print('Информация добавлена!')
-        elif menu == '3':
-            show_product()
+# User.create(username='new_user1',age=23, email='ychag1@example.com')
+# User.create(username='new_user2',age=20, email='ychag2@example.com')
+# User.create(username='new_user3',age=25, email='ychag3@example.com')
 
-        else:
-            print('Не коретный выбор!')
+# Account.create(nickname='user1', level=11)
+# Account.create(nickname='user2', level=15)
+# Account.create(nickname='user3', level=20)
 
-    # add_product('Anton', 'ipad', 1000, 'Планшет')
-    # add_product('Alex', 'iPhone Max', 1500, 'Топовый смартфон')
-    # add_product('Piter', 'Samsung Fold 5', 1700, 'Раскладной смартфон')
-    # add_product_ownership('Anton', 'планшет', '2024-02-19')
-    # add_product_ownership('Alex', 'смартфон', '2024-02-10')
-    # add_product_ownership('Piter', 'смартфон', '2024-02-01')
+# users = User.select()
+# for user in users:
+#     print(f'{user.username} | {user.email}')
+
+# user = User.get(User.id == 1)
+# user.username = 'new_username'
+# user.save()
+#
+# user = User.get(User.id == 1)
+# user.delete_instance()
+#
+# User.delete().where(User.id == 2).execute()
+
+
+# users = User.select().where(User.username == 'Andrey')
+# for user in users:
+#     print(f'{user.username} | {user.email}')
+
+
+# users = User.select().where((User.username == 'Andrey') & (User.age == 23))
+# for user in users:
+#     print(user.id)
+
+# users = User.select().where((User.username == 'Andrey') | (User.username == 'Aleksey'))
+# for user in users:
+#     print(user.id)
+
+# users = User.select().where(User.username ** 'A%')
+# for user in users:
+#     print(user.id)
+
+
+# users = User.select().where(User.age << [23, 28])
+# for user in users:
+#     print(user.id)
+
+# users = User.select().where((User.age >= 23) & (User.age <= 28))
+# for user in users:
+#     print(user.id)
+
+
+# Product.create(name='APhone', price=100, stock=1)
+# Product.create(name='APhone2', price=120, stock=3)
+# Product.create(name='aPhone3', price=150, stock=20)
+
+# products = Product.select().where(Product.stock >= 10)
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# products = Product.select().where(Product.price >= 200)
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# prod = Product.update(price = 110).where(Product.id == 1).execute()
+# products = Product.select()
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# prod = Product.delete().where(Product.stock == 2).execute()
+# products = Product.select()
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+#
+# products = Product.select().where((Product.price >= 100) & (Product.price <= 150))
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
+#
+# products = Product.select().where(Product.name ** 'A%')
+# for product in products:
+#     print(f'Название: {product.name}, цена: {product.price}')
