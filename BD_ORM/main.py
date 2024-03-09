@@ -1,7 +1,6 @@
 from models import *
 
 
-
 # new_user = User(username='new_user', email='ychag@example.')
 # new_user.save()
 

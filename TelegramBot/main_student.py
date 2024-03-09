@@ -13,30 +13,27 @@ def start(message):
     conn = sqlite3.connect("students_db.sql")
     cursor = conn.cursor()
     cursor.execute(
-        'CREATE TABLE IF NOT EXISTS students (id INTEGER AUTO_INCREMENT PRIMARY KEY, username varchar(50), age integer, average  real)')
+        "CREATE TABLE IF NOT EXISTS students (id INTEGER AUTO_INCREMENT PRIMARY KEY, username varchar(50), age integer, average  real)"
+    )
     conn.commit()
     cursor.close()
     conn.close()
 
-    bot.send_message(
-        message.chat.id,
-        "Регистрация. Введите имя")
+    bot.send_message(message.chat.id, "Регистрация. Введите имя")
     bot.register_next_step_handler(message, user_name)
 
 
 def user_name(message):
     global username
     username = message.text.strip()
-    bot.send_message(
-        message.chat.id, 'Введите возраст')
+    bot.send_message(message.chat.id, "Введите возраст")
     bot.register_next_step_handler(message, user_age)
 
 
 def user_age(message):
     global age
     age = message.text.strip()
-    bot.send_message(
-        message.chat.id, 'Введите средний балл')
+    bot.send_message(message.chat.id, "Введите средний балл")
     bot.register_next_step_handler(message, user_average)
 
 
@@ -45,7 +42,10 @@ def user_average(message):
 
     conn = sqlite3.connect("students_db.sql")
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO students (username,age,average) VALUES("%s", "%s", "%s")' % (username, age, average))
+    cursor.execute(
+        'INSERT INTO students (username,age,average) VALUES("%s", "%s", "%s")'
+        % (username, age, average)
+    )
 
     conn.commit()
     cursor.close()
@@ -61,12 +61,12 @@ def callback(call):
     conn = sqlite3.connect("students_db.sql")
     cursor = conn.cursor()
 
-    cursor.execute('SELECT * FROM students WHERE average > 4')
+    cursor.execute("SELECT * FROM students WHERE average > 4")
     students = cursor.fetchall()
-    info = ''
+    info = ""
 
     for st in students:
-        info += f'Имя: {st[1]}, возраст: {st[2]}, Средний балл: {st[3]}\n'
+        info += f"Имя: {st[1]}, возраст: {st[2]}, Средний балл: {st[3]}\n"
     cursor.close()
     conn.close()
 

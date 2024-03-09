@@ -3,7 +3,7 @@ import datetime
 
 # from playhouse.cockroachdb import JSONField
 
-db = SqliteDatabase('tweets.db')
+db = SqliteDatabase("tweets.db")
 
 
 class BaseModel(Model):
@@ -18,13 +18,13 @@ class User(BaseModel):
 class Tweet(BaseModel):
     content = CharField()
     timestamp = DateTimeField(default=datetime.datetime.now)
-    user = ForeignKeyField(User, backref='tweets')
+    user = ForeignKeyField(User, backref="tweets")
 
 
 class Favorite(BaseModel):
-    user = ForeignKeyField(User, backref='favorites')
-    tweet = ForeignKeyField(Tweet, backref='favorites')
+    user = ForeignKeyField(User, backref="favorites")
+    tweet = ForeignKeyField(Tweet, backref="favorites")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     db.create_tables([User, Tweet, Favorite])

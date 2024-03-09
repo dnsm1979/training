@@ -3,7 +3,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Message")
-icon = tk.PhotoImage(file='icon2.png')
+icon = tk.PhotoImage(file="icon2.png")
 root.iconphoto(False, icon)
 root.geometry("400x500")
 
@@ -30,20 +30,20 @@ root.grid_columnconfigure(1, minsize=200)
 # root.grid_rowconfigure(0, minsize=200)
 # root.grid_rowconfigure(1, minsize=200)
 
+
 def get_entry():
     value = name.get()
     if value:
         print(value)
     else:
-        print('No value')
+        print("No value")
 
-tk.Label(root, text='Имя').grid(row=0, column=1, stick='w')
+
+tk.Label(root, text="Имя").grid(row=0, column=1, stick="w")
 name = tk.Entry(root)
 name.grid(row=0, column=0)
 
-tk.Button(root, text='Send', command=get_entry).grid(row=0, column=2, stick='w')
-
-
+tk.Button(root, text="Send", command=get_entry).grid(row=0, column=2, stick="w")
 
 
 root.mainloop()

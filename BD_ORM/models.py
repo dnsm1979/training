@@ -1,6 +1,6 @@
 from peewee import *
 
-db = SqliteDatabase('15.db')
+db = SqliteDatabase("15.db")
 
 
 class BaseModel(Model):
@@ -13,8 +13,10 @@ class User(BaseModel):
     username = CharField(unique=True)
     age = IntegerField()
     email = CharField(unique=True)
+
     class Meta:
-        db_table = 'Users'
+        db_table = "Users"
+
 
 class Account(BaseModel):
     id = PrimaryKeyField()
@@ -22,7 +24,8 @@ class Account(BaseModel):
     level = IntegerField()
 
     class Meta:
-        db_table = 'Accounts'
+        db_table = "Accounts"
+
 
 class Product(BaseModel):
     id = PrimaryKeyField()
@@ -31,8 +34,8 @@ class Product(BaseModel):
     stock = IntegerField()
 
     class Meta:
-        db_table = 'Products'
+        db_table = "Products"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     db.create_tables([User, Account, Product])
