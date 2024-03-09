@@ -8,7 +8,7 @@ w = 500
 root.geometry(f"{h}x{w}")
 # root.resizable(True, True)
 # root.minsize(200, 400)
-icon = tk.PhotoImage(file='icon.png')
+icon = tk.PhotoImage(file='icon2.png')
 root.iconphoto(False, icon)
 # root.config(bg='blue')
 lable_1 = tk.Label(root, text='Hello World', bg='pink', fg = 'green',

@@ -3,7 +3,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Message")
-icon = tk.PhotoImage(file='icon.png')
+icon = tk.PhotoImage(file='icon2.png')
 root.iconphoto(False, icon)
 root.geometry("400x500")
 
