@@ -9,6 +9,7 @@ root.iconphoto(False, icon)
 root.geometry("400x500")
 
 
+
 def get_entry(oper):
     funcs_names = {"+": op.__add__, "*": op.__mul__, "-": op.__sub__, "/": op.truediv}
     value1 = name.get()
