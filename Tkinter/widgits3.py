@@ -8,24 +8,30 @@ root.title("Вычисление площади фигур")
 level_var = tk.StringVar()
 level_var.set(None)
 
+
+def cleanup():
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Label):
+            widget.pack_forget()
+        if isinstance(widget, tk.Entry):
+            widget.pack_forget()
+
 def submit():
     level = level_var.get()
     if level == "Квадрат":
-        for widget in [ch1, ch2, ch3]:
-            widget.pack_forget()
-        tk.Label(root, text=' Сторона 1:').pack()
+        cleanup()
+        L1 = tk.Label(root, text=' Сторона 1:').pack()
         name_entry = tk.Entry(root)
+        name_entry.insert(0, " Сторона 1:")
         name_entry.pack()
     if level == "Треугольник":
-        for widget in [ch1, ch2, ch3]:
-            widget.pack_forget()
+        cleanup()
         tk.Label(root, text=' Сторона 2:').pack()
         name_entry2 = tk.Entry(root)
         name_entry2.pack()
 
     if level == "Круг":
-        for widget in [ch1, ch2, ch3]:
-            widget.pack_forget()
+        cleanup()
         tk.Label(root, text=' Сторона 3:').pack()
         name_entry3 = tk.Entry(root)
         name_entry3.pack()

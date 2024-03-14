@@ -6,10 +6,6 @@ root.title("Простой калькулятор")
 icon = tk.PhotoImage(file="icon2.png")
 root.iconphoto(False, icon)
 root.geometry("400x500")
-# root.grid_columnconfigure(0, minsize=200)
-# root.grid_columnconfigure(1, minsize=200)
-# root.grid_rowconfigure(0, minsize=200)
-# root.grid_rowconfigure(1, minsize=200)
 
 
 def get_entry_sum():
