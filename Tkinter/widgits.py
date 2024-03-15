@@ -39,15 +39,22 @@ root.title("Виджиты")
 level_var = tk.StringVar()
 level_var.set("Новичек")
 
+
 def submit():
     level = level_var.get()
     print(level)
 
 
 tk.Label(root, text="Выберите свой уровень")
-tk.Radiobutton(root, text="Новичек", variable=level_var, value="Новичек", command=submit).pack()
-tk.Radiobutton(root, text="Средний",variable=level_var, value="Средний", command=submit).pack()
-tk.Radiobutton(root, text="Профи",variable=level_var, value="Профи", command=submit).pack()
+tk.Radiobutton(
+    root, text="Новичек", variable=level_var, value="Новичек", command=submit
+).pack()
+tk.Radiobutton(
+    root, text="Средний", variable=level_var, value="Средний", command=submit
+).pack()
+tk.Radiobutton(
+    root, text="Профи", variable=level_var, value="Профи", command=submit
+).pack()
 
 
 root.mainloop()

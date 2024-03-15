@@ -4,22 +4,29 @@ root = tk.Tk()
 root.geometry("400x500")
 root.title("Виджиты")
 
-tk.Label(root, text='Введите ваше имя:').pack()
+tk.Label(root, text="Введите ваше имя:").pack()
 name_entry = tk.Entry(root)
 name_entry.pack()
 
 
-tk.Label(root, text='Выберите ваш пол:').pack()
+tk.Label(root, text="Выберите ваш пол:").pack()
 level_var = tk.StringVar()
 level_var.set("мужской")
+
 
 def submit():
     level = level_var.get()
 
-tk.Radiobutton(root, text="мужской", variable=level_var, value="мужской", command=submit).pack()
-tk.Radiobutton(root, text="женский", variable=level_var, value="женский", command=submit).pack()
 
-tk.Label(root, text='Выберите ваши любимые языки программирования:').pack()
+tk.Radiobutton(
+    root, text="мужской", variable=level_var, value="мужской", command=submit
+).pack()
+tk.Radiobutton(
+    root, text="женский", variable=level_var, value="женский", command=submit
+).pack()
+
+tk.Label(root, text="Выберите ваши любимые языки программирования:").pack()
+
 
 def show_user():
     name = name_entry.get()
@@ -47,11 +54,7 @@ tk.Checkbutton(root, text="C++", variable=toggle_var3).pack()
 tk.Checkbutton(root, text="C#", variable=toggle_var4).pack()
 
 
-
-
 tk.Button(root, text="Отправить", command=show_user).pack()
-
-
 
 
 root.mainloop()
