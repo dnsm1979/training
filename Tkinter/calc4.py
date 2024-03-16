@@ -12,27 +12,52 @@ calc = tk.Entry(root, justify=tk.RIGHT, font=("Arial", 15), width=15)
 calc.grid(row=0, column=1, columnspan=5, ipadx=30, ipady=10, padx=5, pady=5, stick="w")
 
 
-save_opr = []
 
+save_opr = []
+mem_num = []
+oper = []
 
 def save_num():
     save_opr.clear()
     save_opr.append(calc.get())
-    calc.delete(0, tk.END)
+    insert_btn["background"] = "red"
+
 
 
 def add_operation(operation):
+    oper.clear()
+    oper.append(operation)
     value = calc.get()
-    if value[-1] in "-+/*":
-        value = value[:-1]
-    calc.delete(0, tk.END)
-    calc.insert(0, value + operation)
+
+    if not mem_num:
+        if operation == "*" or operation == "/":
+            num  = "1"
+        else:
+            num = "0"
+        calc.delete(0, tk.END)
+        result = (value + operation + num)
+        calc.insert(0, eval(result))
+    else:
+        num = mem_num[0]
+        calc.delete(0, tk.END)
+        result = (num + operation + value)
+        calc.insert(0, eval(result))
+    mem_num.clear()
+    mem_num.append(calc.get())
+
 
 
 def add_digit(digit):
-    value = calc.get() + str(digit)
-    calc.delete(0, tk.END)
-    calc.insert(0, value)
+    if not mem_num:
+        value = calc.get() + str(digit)
+        calc.delete(0, tk.END)
+        calc.insert(0, value)
+    else:
+        if mem_num[0] == calc.get():
+            calc.delete(0, tk.END)
+        value = calc.get() + str(digit)
+        calc.delete(0, tk.END)
+        calc.insert(0, value)
 
 
 def calculate():
@@ -40,6 +65,16 @@ def calculate():
 
     calc.delete(0, tk.END)
     calc.insert(0, eval(value))
+    mem_num.clear()
+    mem_num.append(calc.get())
+
+def result():
+    num = calc.get()
+    calc.delete(0, tk.END)
+    res = mem_num[0] + oper[0] + num
+    calc.insert(0, eval(res))
+    mem_num.clear()
+    mem_num.append(calc.get())
 
 
 def make_operation_button(operation):
@@ -50,11 +85,28 @@ def make_operation_button(operation):
 
 
 def make_calc_button(operation):
-    return tk.Button(text=operation, command=calculate)
+    return tk.Button(text=operation, command=result)
 
 
 def delete_numbers():
     calc.delete(0, tk.END)
+    mem_num.clear()
+    oper.clear()
+
+def clear_save_num():
+    save_opr.clear()
+    # insert_btn['state'] = tk.DISABLED
+
+def sum_save_num():
+    if not save_opr:
+        save_opr.append(calc.get())
+    else:
+        so = eval(save_opr[0] + "+" + calc.get())
+        save_opr.clear()
+        save_opr.append(so)
+    # insert_btn['state'] = tk.NORMAL
+
+
 
 
 btn1 = tk.Button(root, text="1", command=lambda: add_digit(1)).grid(
@@ -104,15 +156,19 @@ make_calc_button("=").grid(
     row=7, column=1, columnspan=4, ipadx=103, ipady=10, padx=5, pady=5, stick="w"
 )
 
-insert_btn = tk.Button(root, text="M-", command=lambda: add_digit(save_opr[0])).grid(
-    row=2, column=1, ipadx=10, ipady=5, padx=5, pady=5, stick="w"
+insert_btn = tk.Button(root, text="M", state="normal", command=lambda:add_digit(0) if not save_opr else add_digit(save_opr[0])).grid(
+    row=2, column=1, ipadx=12, ipady=5, padx=5, pady=5, stick="w"
 )
 
-save_btn = tk.Button(root, text="M+", command=save_num).grid(
+sum_btn = tk.Button(root, text="M+", command=sum_save_num).grid(
     row=2, column=2, ipadx=10, ipady=5, padx=5, pady=5, stick="w"
 )
 
+cl_save_btn = tk.Button(root, text="M-", command=clear_save_num).grid(
+    row=2, column=3, ipadx=10, ipady=5, padx=5, pady=5, stick="w"
+)
+
 delete_btn = tk.Button(root, text="C", command=delete_numbers).grid(
-    row=2, column=3, columnspan=2, ipadx=43, ipady=5, padx=5, pady=5, stick="w"
+    row=2, column=4, ipadx=13, ipady=5, padx=5, pady=5, stick="w"
 )
 root.mainloop()
