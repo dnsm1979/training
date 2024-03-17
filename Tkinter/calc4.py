@@ -12,16 +12,15 @@ calc = tk.Entry(root, justify=tk.RIGHT, font=("Arial", 15), width=15)
 calc.grid(row=0, column=1, columnspan=5, ipadx=30, ipady=10, padx=5, pady=5, stick="w")
 
 
-
 save_opr = []
 mem_num = []
 oper = []
+
 
 def save_num():
     save_opr.clear()
     save_opr.append(calc.get())
     insert_btn["background"] = "red"
-
 
 
 def add_operation(operation):
@@ -31,20 +30,19 @@ def add_operation(operation):
 
     if not mem_num:
         if operation == "*" or operation == "/":
-            num  = "1"
+            num = "1"
         else:
             num = "0"
         calc.delete(0, tk.END)
-        result = (value + operation + num)
+        result = value + operation + num
         calc.insert(0, eval(result))
     else:
         num = mem_num[0]
         calc.delete(0, tk.END)
-        result = (num + operation + value)
+        result = num + operation + value
         calc.insert(0, eval(result))
     mem_num.clear()
     mem_num.append(calc.get())
-
 
 
 def add_digit(digit):
@@ -67,6 +65,7 @@ def calculate():
     calc.insert(0, eval(value))
     mem_num.clear()
     mem_num.append(calc.get())
+
 
 def result():
     num = calc.get()
@@ -93,9 +92,11 @@ def delete_numbers():
     mem_num.clear()
     oper.clear()
 
+
 def clear_save_num():
     save_opr.clear()
     # insert_btn['state'] = tk.DISABLED
+
 
 def sum_save_num():
     if not save_opr:
@@ -105,8 +106,6 @@ def sum_save_num():
         save_opr.clear()
         save_opr.append(so)
     # insert_btn['state'] = tk.NORMAL
-
-
 
 
 btn1 = tk.Button(root, text="1", command=lambda: add_digit(1)).grid(
@@ -156,9 +155,12 @@ make_calc_button("=").grid(
     row=7, column=1, columnspan=4, ipadx=103, ipady=10, padx=5, pady=5, stick="w"
 )
 
-insert_btn = tk.Button(root, text="M", state="normal", command=lambda:add_digit(0) if not save_opr else add_digit(save_opr[0])).grid(
-    row=2, column=1, ipadx=12, ipady=5, padx=5, pady=5, stick="w"
-)
+insert_btn = tk.Button(
+    root,
+    text="M",
+    state="normal",
+    command=lambda: add_digit(0) if not save_opr else add_digit(save_opr[0]),
+).grid(row=2, column=1, ipadx=12, ipady=5, padx=5, pady=5, stick="w")
 
 sum_btn = tk.Button(root, text="M+", command=sum_save_num).grid(
     row=2, column=2, ipadx=10, ipady=5, padx=5, pady=5, stick="w"
