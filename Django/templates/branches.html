@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Список филиалов</h2>
+    <ui>
+        {% for i in branches %}
+            <li><a href="{% url 'branches_detail' i.id %}">{{ i.title }}</a></li>
+        {% endfor %}
+    </ui>
+{% endblock %}
