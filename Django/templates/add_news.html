@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Добавить новость</h2>
+
+    <form action="{% url 'add_news_post' %}" method='post'>
+        {% csrf_token %}
+        <label for="title">Название новости:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="title">Анонс новости:</label><br>
+        <input type="text" id="anons" name="anons"><br>
+        <label for="title">Текст новости:</label><br>
+        <input type="textarea" id="text" name="text"><br>
+        <p><input type="submit" value="Добавить новость на сайт"></p>
+    </form>
+
+{% endblock %}

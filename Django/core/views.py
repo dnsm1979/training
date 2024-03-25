@@ -32,12 +32,23 @@ def branches(request):
 def add_branches(request):
     return render(request, "add_branches.html")
 
+def add_news(request):
+    return render(request, "add_news.html")
+
 def add_branches_post(request):
     title = request.POST.get('title')
     text = request.POST.get('text')
     branch = Branch(title=title, text=text)
     branch.save()
     return redirect("branches")
+
+def add_news_post(request):
+    title = request.POST.get('title')
+    anons = request.POST.get('anons')
+    text = request.POST.get('text')
+    news = News(title=title, anons=anons, text=text)
+    news.save()
+    return redirect("news")
 
 def branches_detail(request, branch_id):
 
