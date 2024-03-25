@@ -1,14 +1,18 @@
 from django.shortcuts import render, redirect
-from .models import Branch
+from .models import Branch, News
 
 def main(request):
 
     return render(request, "main.html")
 
 def news(request):
+    news = News.objects.all()
+    return render(request, "news.html", {'news': news})
 
-    return render(request, "news.html")
-
+def news_detail(request, news_id):
+    news = News.objects.get(id=news_id)
+    context = {'news': news}
+    return render(request, "news_detail.html", context)
 def management(request):
 
     return render(request, "management.html")
