@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Отзывы</h2>
+    <ui>
+        {% for i in feedbacks %}
+            <li><a href="{% url 'feedbacks_details' i.id %}">{{ i.title }}</a></li>
+        {% endfor %}
+    </ui>
+
+<h2>Добавить отзыв</h2>
+
+    <form action="{% url 'feedbacks' %}" method='post'>
+        {% csrf_token %}
+        <label for="title">Название:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="title">Описание:</label><br>
+        <input type="textarea" id="text" name="text"><br>
+        <p><input type="submit" value="Отправить отзыв"></p>
+    </form>
+{% endblock %}
