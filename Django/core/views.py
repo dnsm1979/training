@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Branch, News, Feedback
-from .forms import BranchForm
+from .forms import BranchForm, NewsForm
 
 def main(request):
 
@@ -57,14 +57,16 @@ def branches_add(request):
     return render(request, "add_branches.html", {'branch_form': branch_form})
 
 def add_news_post(request):
+    news_form = NewsForm
     if request.method == "POST":
-        title = request.POST.get('title')
-        anons = request.POST.get('anons')
-        text = request.POST.get('text')
-        news = News(title=title, anons=anons, text=text)
-        news.save()
-        return redirect("news")
-    return render(request, "add_news.html")
+        news_form = NewsForm(request.POST)
+        if news_form.is_valid():
+            title = request.POST.get('title')
+            anons = request.POST.get('anons')
+            text = request.POST.get('text')
+            news = News(title=title, anons=anons, text=text).save()
+            return redirect("news")
+    return render(request, "add_news.html", {'news_form': news_form})
 
 def branches_detail(request, branch_id):
 
