@@ -33,8 +33,8 @@ def branches(request):
 # def add_branches(request):
 #     return render(request, "add_branches.html")
 
-def add_news(request):
-    return render(request, "add_news.html")
+# def add_news(request):
+#     return render(request, "add_news.html")
 
 def branches_add(request):
     branch_form = BranchForm
@@ -57,12 +57,14 @@ def branches_add(request):
     return render(request, "add_branches.html", {'branch_form': branch_form})
 
 def add_news_post(request):
-    title = request.POST.get('title')
-    anons = request.POST.get('anons')
-    text = request.POST.get('text')
-    news = News(title=title, anons=anons, text=text)
-    news.save()
-    return redirect("news")
+    if request.method == "POST":
+        title = request.POST.get('title')
+        anons = request.POST.get('anons')
+        text = request.POST.get('text')
+        news = News(title=title, anons=anons, text=text)
+        news.save()
+        return redirect("news")
+    return render(request, "add_news.html")
 
 def branches_detail(request, branch_id):
 
