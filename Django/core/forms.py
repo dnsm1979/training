@@ -1,5 +1,5 @@
 from django import forms
-from .models import Branch
+from .models import Branch, Feedback
 from django.core.validators import ValidationError
 
 
@@ -23,3 +23,16 @@ class NewsForm(forms.Form):
         if Branch.objects.filter(title=title).exists():
             raise ValidationError('Такой заголовок уже есть!')
         return title
+
+class FeedBackForm(forms.Form):
+    title = forms.CharField(max_length=100, min_length=2, label='Заголовок')
+    text = forms.CharField(max_length=500, required=True, label='Текст', widget=forms.Textarea)
+    class Meta:
+        model = Branch
+        fields = ['title', 'text']
+
+
+class FeedBackModelForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['title', 'text']

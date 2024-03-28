@@ -12,10 +12,11 @@
 
     <form action="{% url 'feedbacks' %}" method='post'>
         {% csrf_token %}
-        <label for="title">Название:</label><br>
-        <input type="text" id="title" name="title"><br>
-        <label for="title">Описание:</label><br>
-        <input type="textarea" id="text" name="text"><br>
+        {{ feedbacks_form }}
+<!--        <label for="title">Название:</label><br>-->
+<!--        <input type="text" id="title" name="title"><br>-->
+<!--        <label for="title">Описание:</label><br>-->
+<!--        <textarea type="textarea" id="text" name="text"></textarea><br>-->
         <p><input type="submit" value="Отправить отзыв"></p>
     </form>
 {% endblock %}

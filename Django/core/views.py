@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Branch, News, Feedback
-from .forms import BranchForm, NewsForm
+from .forms import BranchForm, NewsForm, FeedBackForm, FeedBackModelForm
+
 
 def main(request):
 
@@ -75,21 +76,32 @@ def branches_detail(request, branch_id):
     context = {'branch': branch}
     return render(request, "branches_detail.html", context)
 
-def feedbacks(request):
-    feedbacks = Feedback.objects.all()
-    return render(request, "feedbacks.html", {'feedbacks': feedbacks})
+def feedbacks_details(request, feedbacks_id):
+
+
+    feedbacks = Feedback.objects.get(id=feedbacks_id)
+    context = {'feedbacks': feedbacks}
+    return render(request, "feedbacks_details.html", context)
+
+# def feedbacks(request):
+#     feedbacks = Feedback.objects.all()
+#     return render(request, "feedbacks.html", {'feedbacks': feedbacks})
 
 def feedbacks(request):
+
     if request.method == "POST":
-        title = request.POST.get('title')
-        if len(title) < 100:
-            text = request.POST.get('text')
-            if len(text) < 500:
-                feedbacks = Feedback(title=title, text=text)
-                feedbacks.save()
-                return redirect("feedbacks")
-
-    return render(request, "feedbacks.html")
+        feedbacks_form = FeedBackModelForm(request.POST)
+        feedbacks_form.save()
+        # if feedbacks_form.is_valid():
+        #     title = request.POST.get('title')
+        #     if len(title) < 100:
+        #         text = request.POST.get('text')
+        #         if len(text) < 500:
+        #             feedbacks = Feedback(title=title, text=text)
+        #             feedbacks.save()
+    feedbacks = Feedback.objects.all()
+    feedbacks_form = FeedBackModelForm()
+    return render(request, "feedbacks.html", {'feedbacks': feedbacks, 'feedbacks_form': feedbacks_form})
 
 # def add_branchform(request):
 #     branch_form = BranchForm
