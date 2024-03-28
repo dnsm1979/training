@@ -1,5 +1,5 @@
 from django import forms
-from .models import Branch, Feedback
+from .models import Branch, Feedback, News
 from django.core.validators import ValidationError
 
 
@@ -45,3 +45,9 @@ class FeedBackModelForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ["title", "text"]
+
+
+class NewsModelForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = ["title", "anons", "text"]

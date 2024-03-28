@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Отзывы</h1>
+
     <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
   <li class="nav-item" role="presentation"><a href="{% url 'main' %}">
     <button class="nav-link rounded-5" id="news-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Главная</button></a>
@@ -25,6 +25,7 @@
     <button class="nav-link active rounded-5" id="feedbacks-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Обратная связь</button></a>
   </li>
 </ul>
+    <h1>Отзывы</h1>
     <ul>
         {% for i in feedbacks %}
             <li><a href="{% url 'feedbacks_details' i.id %}">{{ i.title }}</a></li>
@@ -36,10 +37,7 @@
     <form action="{% url 'feedbacks' %}" method='post'>
         {% csrf_token %}
         {{ feedbacks_form }}
-<!--        <label for="title">Название:</label><br>-->
-<!--        <input type="text" id="title" name="title"><br>-->
-<!--        <label for="title">Описание:</label><br>-->
-<!--        <textarea type="textarea" id="text" name="text"></textarea><br>-->
+
         <p><input type="submit" value="Отправить отзыв"></p>
     </form>
 {% endblock %}

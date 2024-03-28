@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Это главная страница!</h1>
+
 <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
   <li class="nav-item" role="presentation"><a href="{% url 'main' %}">
     <button class="nav-link active rounded-5" id="news-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Главная</button></a>
@@ -25,16 +25,5 @@
     <button class="nav-link rounded-5" id="feedbacks-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Обратная связь</button></a>
   </li>
 </ul>
-
-<!--<h2>Список разделов</h2>-->
-<!--<ul>-->
-<!--    <li><a href="{% url 'news' %}">Новости</a></li>-->
-<!--    <li><a href="{% url 'about' %}">О нас</a></li>-->
-<!--    <li><a href="{% url 'management' %}">Руководство компании</a></li>-->
-<!--    <li><a href="{% url 'contacts' %}">Контакты</a></li>-->
-<!--    <li><a href="{% url 'branches' %}">Филиалы</a></li>-->
-<!--    <li><a href="{% url 'branches_add' %}">Добавить филиал</a></li>-->
-<!--    <li><a href="{% url 'add_news_post' %}">Добавить новость</a></li>-->
-<!--    <li><a href="{% url 'feedbacks' %}">Обратная связь</a></li>-->
-<!--</ul>-->
+<h1>Это главная страница!</h1>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Branch, News, Feedback, Countries
-from .forms import BranchForm, NewsForm, FeedBackForm, FeedBackModelForm
+from .forms import BranchForm, NewsForm, FeedBackForm, FeedBackModelForm, NewsModelForm
 
 
 def main(request):
@@ -8,9 +8,9 @@ def main(request):
     return render(request, "main.html")
 
 
-def news(request):
-    news = News.objects.all()
-    return render(request, "news.html", {"news": news})
+# def news(request):
+#     news = News.objects.all()
+#     return render(request, "news.html", {"news": news})
 
 
 def news_detail(request, news_id):
@@ -74,17 +74,20 @@ def branches_add(request):
     return render(request, "add_branches.html", {"branch_form": branch_form})
 
 
-def add_news_post(request):
+def news(request):
     news_form = NewsForm
     if request.method == "POST":
-        news_form = NewsForm(request.POST)
-        if news_form.is_valid():
-            title = request.POST.get("title")
-            anons = request.POST.get("anons")
-            text = request.POST.get("text")
-            news = News(title=title, anons=anons, text=text).save()
-            return redirect("news")
-    return render(request, "add_news.html", {"news_form": news_form})
+        news_form = NewsModelForm(request.POST)
+        news_form.save()
+        # if news_form.is_valid():
+        #     title = request.POST.get("title")
+        #     anons = request.POST.get("anons")
+        #     text = request.POST.get("text")
+        #     news = News(title=title, anons=anons, text=text).save()
+    news = News.objects.all()
+    news_form = NewsModelForm
+    # return redirect("news")
+    return render(request, "news.html", {"news": news, "news_form": news_form})
 
 
 def branches_detail(request, branch_id):
