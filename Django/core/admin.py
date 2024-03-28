@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Branch)
 admin.site.register(News)
 admin.site.register(Feedback)
+admin.site.register(Countries)
