@@ -96,6 +96,12 @@ def branches_detail(request, branch_id):
     context = {"branch": branch}
     return render(request, "branches_detail.html", context)
 
+def branches_country(request, country_id):
+
+    country = Countries.objects.get(id=country_id)
+    context = {"country": country}
+    return render(request, "branches.html", context)
+
 
 def feedbacks_details(request, feedbacks_id):
 
