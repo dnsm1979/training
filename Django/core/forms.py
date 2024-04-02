@@ -1,13 +1,15 @@
 from django import forms
-from .models import Branch, Feedback, News
+from .models import Branch, Feedback, News, Countries
 from django.core.validators import ValidationError
 
 
 class BranchForm(forms.Form):
-    title = forms.CharField(max_length=100, min_length=2, label="Заголовок")
+    title = forms.CharField(max_length=100, min_length=2, label="Заголовок", widget=forms.TextInput(attrs={'class': 'form-control'}))
     text = forms.CharField(
         max_length=500, required=True, label="Текст", widget=forms.Textarea
-    )
+        (attrs={'class': 'form-control'}))
+    country = forms.ModelChoiceField(widget=forms.Select
+        (attrs={'class': 'form-control'}), queryset=Countries.objects.all())
 
     def clean_title(self):
         title = self.cleaned_data.get("title")

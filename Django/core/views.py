@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Branch, News, Feedback, Countries
 from .forms import BranchForm, NewsForm, FeedBackForm, FeedBackModelForm, NewsModelForm
 
@@ -34,23 +34,29 @@ def contacts(request):
     return render(request, "contacts.html")
 
 
-def branches(request):
+def branches(request, country_id=None):
+    context = {}
     branches = Branch.objects.all()
     countries = Countries.objects.all()
+
+    if country_id:
+        country = get_object_or_404(Countries, id=country_id)
+        branches = Branch.objects.filter(country=country)
+        context.update({"active_country": country})
+
+    context.update({"branches": branches, "countries": countries})
     return render(
-        request, "branches.html", {"branches": branches, "countries": countries}
+        request, "branches.html", context
     )
 
 
-# def countries(request):
+# def branches_country(request, country_id):
+#
+#     country = get_object_or_404(Countries, id=country_id)
+#     branches = Branch.objects.filter(country=country)
 #     countries = Countries.objects.all()
-#     return render(request, "branches.html", {"countries": countries})
-
-# def add_branches(request):
-#     return render(request, "add_branches.html")
-
-# def add_news(request):
-#     return render(request, "add_news.html")
+#
+#     return render(request, "branches.html", {"branches": branches, "countries": countries, "active_country": country})
 
 
 def branches_add(request):
@@ -61,7 +67,9 @@ def branches_add(request):
         if branch_form.is_valid():
             title = branch_form.cleaned_data.get("title")
             text = branch_form.cleaned_data.get("text")
-            Branch(title=title, text=text).save()
+            country_title = branch_form.cleaned_data.get("country")
+            country = Countries.objects.get(title=country_title)
+            Branch(title=title, text=text, country=country).save()
             # branch_form.save()
             return redirect("branches")
     #     title = request.POST.get('title')
@@ -96,11 +104,7 @@ def branches_detail(request, branch_id):
     context = {"branch": branch}
     return render(request, "branches_detail.html", context)
 
-def branches_country(request, country_id):
 
-    country = Countries.objects.get(id=country_id)
-    context = {"country": country}
-    return render(request, "branches.html", context)
 
 
 def feedbacks_details(request, feedbacks_id):
