@@ -26,11 +26,34 @@
   </li>
 </ul>
     <h1>Список новостей</h1>
-    <ul>
-        {% for i in news %}
-            <li><a href="{% url 'news_detail' i.id %}">{{ i.title }}</a></li>
-        {% endfor %}
-    </ul>
+<div class="col-md-10 mx-auto">
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Категории</h3>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for j in category %}
+
+                    <li><a href="{% url 'news_category' j.id %}" class="btn {% if active_category == j %} btn-primary {% endif %}" role="button" data-bs-toggle="button">{{ j.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+            </p>
+        </div>
+        <div class="col-md-10">
+            <h3>Новости</h3>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for i in news %}
+                    <li><a href="{% url 'news_detail' i.id %}" class="btn" role="button" data-bs-toggle="button">{{ i.title }}</a></li>
+                    <p>{{ i.get_short_text }}</p>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+    </div>
+</div>
+
     <h2>Добавить новость</h2>
 
     <form action="{% url 'news' %}" method='post'>

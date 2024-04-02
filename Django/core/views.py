@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Branch, News, Feedback, Countries
+from .models import Branch, News, Feedback, Countries, NewsCategory
 from .forms import BranchForm, NewsForm, FeedBackForm, FeedBackModelForm, NewsModelForm
 
 
@@ -82,21 +82,34 @@ def branches_add(request):
     return render(request, "add_branches.html", {"branch_form": branch_form})
 
 
-def news(request):
+def news(request, category_id=None):
     news_form = NewsForm
-    if request.method == "POST":
-        news_form = NewsModelForm(request.POST)
-        news_form.save()
-        # if news_form.is_valid():
-        #     title = request.POST.get("title")
-        #     anons = request.POST.get("anons")
-        #     text = request.POST.get("text")
-        #     news = News(title=title, anons=anons, text=text).save()
+    context = {}
     news = News.objects.all()
-    news_form = NewsModelForm
-    # return redirect("news")
-    return render(request, "news.html", {"news": news, "news_form": news_form})
+    category = NewsCategory.objects.all()
 
+    if request.method == "POST":
+        news_form = NewsForm(request.POST)
+        if news_form.is_valid():
+            title = news_form.cleaned_data.get("title")
+            text = news_form.cleaned_data.get("text")
+            anons = news_form.cleaned_data.get("anons")
+            category_title = news_form.cleaned_data.get("category")
+            category_sel = NewsCategory.objects.get(title=category_title)
+            News(title=title, text=text, anons=anons, category=category_sel).save()
+            return redirect("news")
+
+
+    if category_id:
+        category = get_object_or_404(NewsCategory, id=category_id)
+        news = News.objects.filter(category=category)
+        context.update({"active_category": category})
+
+    context.update({"news": news, "category": category, "news_form": news_form})
+
+    # return redirect("news")
+    # return render(request, "news.html", {"news": news, "news_form": news_form})
+    return render(request, "news.html", context)
 
 def branches_detail(request, branch_id):
 

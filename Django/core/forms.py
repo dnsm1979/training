@@ -1,5 +1,5 @@
 from django import forms
-from .models import Branch, Feedback, News, Countries
+from .models import Branch, Feedback, News, Countries, NewsCategory
 from django.core.validators import ValidationError
 
 
