@@ -11,7 +11,8 @@ class Countries(models.Model):
 class Branch(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок", blank=True)
     text = models.TextField(verbose_name="описание")
-    country = models.ForeignKey(Countries, on_delete=models.SET_NULL, null=True, blank=True, related_name='country_branches')
+    country = models.ForeignKey(Countries, on_delete=models.SET_NULL, null=True, blank=True,
+                                related_name='country_branches')
 
     class Meta:
         verbose_name = "Филиал"
@@ -23,17 +24,20 @@ class Branch(models.Model):
     def __str__(self):
         return self.title
 
+
 class NewsCategory(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название", blank=True)
 
     def __str__(self):
         return self.title
 
+
 class News(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     anons = models.CharField(max_length=255, verbose_name="Анонс")
     text = models.TextField(verbose_name="Текст новости")
-    category = models.ForeignKey(NewsCategory, on_delete=models.SET_NULL, null=True, blank=True, related_name='category_news')
+    category = models.ForeignKey(NewsCategory, on_delete=models.SET_NULL, null=True, blank=True,
+                                 related_name='category_news')
 
     def __str__(self):
         return self.title

@@ -24,6 +24,8 @@ class NewsForm(forms.Form):
     text = forms.CharField(
         max_length=500, required=True, label="Текст", widget=forms.Textarea
     )
+    category = forms.ModelChoiceField(widget=forms.Select
+    (attrs={'class': 'form-control'}), queryset=NewsCategory.objects.all())
 
     def clean_title(self):
         title = self.cleaned_data.get("title")

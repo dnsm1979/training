@@ -40,7 +40,7 @@
             </ul>
             </p>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-4">
             <h3>Новости</h3>
             <p class="d-inline-flex gap-1">
             <ul>
@@ -51,14 +51,39 @@
             </ul>
             </p>
         </div>
+
+
+
+        <div class="col-md-4">
+        <h3>Добавить новость</h3>
+        <form action="{% url 'news' %}" method='post'>
+            {% csrf_token %}
+            {{ news_form.non_field_errors }}
+            <div class="mb-3">
+                {{ news_form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Название новости:</label>
+                {{ news_form.title }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.anons.errors }}
+                <label for="{{ form.anons.id_for_label }}">Анонс новости:</label>
+                {{ news_form.anons }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.text.errors }}
+                <label for="{{ form.text.id_for_label }}">Текст новости:</label>
+                {{ news_form.text }}
+            </div>
+
+            <div class="mb-3">
+                {{ news_form.category.errors }}
+                <label for="{{ form.category.id_for_label }}">Категория:</label>
+                {{ news_form.category }}
+            </div>
+
+                   <input type="submit" value="Опубликовать новость">
+        </form>
+     </div>
     </div>
-</div>
-
-    <h2>Добавить новость</h2>
-
-    <form action="{% url 'news' %}" method='post'>
-        {% csrf_token %}
-        {{ news_form }}
-        <p><input type="submit" value="Опубликовать новость"></p>
-    </form>
+    </div>
 {% endblock %}
