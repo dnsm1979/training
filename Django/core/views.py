@@ -118,5 +118,5 @@ def feedbacks(request):
     return render(
         request,
         "feedbacks.html",
-        {"feedbacks": feedbacks, "feedbacks_form": feedbacks_form},
+        {"feedbacks": feedbacks, "feedbacks_form": feedbacks_form}
     )
