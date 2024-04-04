@@ -11,8 +11,10 @@ urlpatterns = [
     path("news/category/<int:category_id>", news, name="news_category"),
     path("branches", branches, name="branches"),
     path("branches/<int:branch_id>", branches_detail, name="branches_detail"),
+    path("branches/class/<int:branch_id>", BranchesDetail.as_view(), name="branches_detail_class"),
     path("branches/country/<int:country_id>", branches, name="branches_country"),
     path("branches/add", branches_add, name="branches_add"),
     path("feedbacks", feedbacks, name="feedbacks"),
     path("feedbacks/<int:feedbacks_id>", feedbacks_details, name="feedbacks_details"),
+    path("feedbacks/class/<int:feedbacks_id>", FeedBackDetail.as_view(), name="feedbacks_details_class"),
 ]

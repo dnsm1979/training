@@ -9,7 +9,7 @@
             <h3>Категории</h3>
             <p class="d-inline-flex gap-1">
             <ul>
-                {% for j in category %}
+                {% for j in categoris %}
 
                     <li><a href="{% url 'news_category' j.id %}" class="btn {% if active_category == j %} btn-primary {% endif %}" role="button" data-bs-toggle="button">{{ j.title }}</a></li>
                 {% endfor %}

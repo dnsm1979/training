@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="col-md-4">
+    <h2>Страница входа</h2>
+
+        <form action="{% url 'login' %}" method='post'>
+            {% csrf_token %}
+            {{ login_form }}
+
+
+                   <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+
+
+{% endblock %}

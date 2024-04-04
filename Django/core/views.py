@@ -73,7 +73,7 @@ def news(request, category_id=None):
     news_form = NewsForm
     context = {}
     news = News.objects.all()
-    category = NewsCategory.objects.all()
+    categoris = NewsCategory.objects.all()
 
     if request.method == "POST":
         news_form = NewsForm(request.POST)
@@ -91,7 +91,7 @@ def news(request, category_id=None):
         news = News.objects.filter(category=category)
         context.update({"active_category": category})
 
-    context.update({"news": news, "category": category, "news_form": news_form})
+    context.update({"news": news, "categoris": categoris, "news_form": news_form})
 
     return render(request, "news.html", context)
 
@@ -101,11 +101,21 @@ def branches_detail(request, branch_id):
     context = {"branch": branch}
     return render(request, "branches_detail.html", context)
 
+from django.views.generic.detail import DetailView
+class BranchesDetail(DetailView):
+    model = Branch
+    template_name = "branches_detail.html"
+    pk_url_kwarg = 'branch_id'
 
 def feedbacks_details(request, feedbacks_id):
     feedbacks = Feedback.objects.get(id=feedbacks_id)
     context = {"feedbacks": feedbacks}
     return render(request, "feedbacks_details.html", context)
+
+class FeedBackDetail(DetailView):
+    model = Feedback
+    template_name = "feedbacks_details.html"
+    pk_url_kwarg = 'feedbacks_id'
 
 
 def feedbacks(request):
