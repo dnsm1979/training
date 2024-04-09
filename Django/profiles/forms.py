@@ -43,6 +43,22 @@ class RegistrForm(forms.Form):
             raise ValidationError("Такой пользователь уже есть!")
         return username
 
+    class ChangePasswordForm(forms.Form):
+
+        password_old = forms.CharField(max_length=100, min_length=2, label="Старый пароль",
+                                   widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+        password_new = forms.CharField(max_length=100, min_length=2, label="Новый ароль",
+                                    widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+        password_re = forms.CharField(max_length=100, min_length=2, label="Новый ароль",
+                                       widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+        def clean(self):
+            password_old = self.cleaned_data.get('password_old')
+            password_new = self.cleaned_data.get('password_new')
+            if password_old!= password_new:
+                raise ValidationError("Пароли не совпадают")
+            return self.cleaned_data
+
     # def __init__(self, request=None, *args, **kwargs):
     #     self.request = request
     #     super().__init__(*args, **kwargs)

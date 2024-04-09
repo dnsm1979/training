@@ -6,4 +6,5 @@ urlpatterns = [
     path("home", home, name="home"),
     path("logout", logout, name="logout"),
     path("register", register, name="register"),
+    path("set_password", set_password, name="set_password"),
 ]

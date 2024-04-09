@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login as login_user, logout as logout_user, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import LoginForm, RegistrForm
+from .forms import LoginForm, RegistrForm, ChangePasswordForm
 from .models import Profile
 
 
@@ -61,4 +61,24 @@ def register(request):
 
 
     return render(request, 'register.html', {'form': form})
+
+
+def set_password(request):
+    from django.contrib.auth.models import User
+    u = User.objects.get(username=request.user)
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            old_password = request.POST.get("old_password")
+            new_pass = request.POST.get("new_password")
+            new_pass_rep = request.POST.get("new_password_repeat")
+            if check_password(old_password, u.password):
+                return HttpResponse('ok')
+            else:
+                return HttpResponse('bad')
+    else:
+        form = ChangePasswordForm()
+
+    return render(request, 'login/set_password.html',
+                  {'form': form, 'user': u})
 
