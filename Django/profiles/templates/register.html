@@ -3,28 +3,30 @@
 
 
 {% block content %}
+ <div class="col-md-4">
     <h3>Регистрация пользователя</h3>
     <p>Пожалуйста заполните форму регистрации:</p>
     <form action="{% url 'register' %}" method="post">
-        {{ user_form.non_field_errors }}
+        {{ form.non_field_errors }}
 
         {% csrf_token %}
          <div class="mb-3">
-                {{ user_form.username.errors }}
-                <label for="{{ form.title.id_for_label }}">Имя пользователя:</label>
-                {{ user_form.username }}
+                {{ form.username.errors }}
+                <label for="{{ form.username.id_for_label }}">Имя пользователя:</label>
+                {{ form.username }}
             </div>
             <div class="mb-3">
-                {{ user_form.password.errors }}
-                <label for="{{ form.text.id_for_label }}">Пароль:</label>
-                {{ user_form.password }}
+                {{ form.password.errors }}
+                <label for="{{ form.password.id_for_label }}">Пароль:</label>
+                {{ form.password }}
             </div>
             <div class="mb-3">
-                {{ user_form.2.errors }}
-                <label for="{{ form.text.id_for_label }}">Пароль2:</label>
-                {{ user_form.password2 }}
+                {{ form.2.errors }}
+                <label for="{{ form.password2.id_for_label }}">Пароль2:</label>
+                {{ form.password2 }}
             </div>
 
                    <input type="submit" value="Зарегистрироваться">
     </form>
+ </div>
 {% endblock %}

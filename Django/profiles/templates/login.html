@@ -7,10 +7,20 @@
 
         <form action="{% url 'login' %}" method='post'>
             {% csrf_token %}
-            {{ login_form }}
+            {{ login_form.non_field_errors }}
+            <div class="mb-3">
+                {{ login_form.username.errors }}
+                <label for="{{ form.username.id_for_label }}">Имя пользователя:</label>
+                {{ login_form.username }}
+            </div>
+            <div class="mb-3">
+                {{ login_form.password.errors }}
+                <label for="{{ form.password.id_for_label }}">Пароль:</label>
+                {{ login_form.password }}
+            </div>
 
 
-                   <input type="submit" value="Submit">
+                   <button type="submit" class="btn btn-primary">Войти</button>
         </form>
 
         </div>
