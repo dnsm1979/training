@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login as login_user, logout as logout_user, get_user_model
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import LoginForm, RegistrForm, ChangePasswordForm
+from .forms import LoginForm, RegistrForm, SetPasswordForm
 from .models import Profile
+from django.contrib.auth.hashers import check_password
 
 
 def login(request):
@@ -65,20 +67,25 @@ def register(request):
 
 def set_password(request):
     from django.contrib.auth.models import User
-    u = User.objects.get(username=request.user)
+    user = User.objects.get(username=request.user)
     if request.method == 'POST':
-        form = ChangePasswordForm(request.POST)
+        form = SetPasswordForm(request.POST)
         if form.is_valid():
-            old_password = request.POST.get("old_password")
-            new_pass = request.POST.get("new_password")
-            new_pass_rep = request.POST.get("new_password_repeat")
-            if check_password(old_password, u.password):
-                return HttpResponse('ok')
+            password_old = request.POST.get("password_old")
+            password_new = request.POST.get("password_new")
+            password_re = request.POST.get("password_re")
+            if check_password(password_old, user.password):
+                user.set_password(user.password_new)
+                user.save()
+                return redirect(request, 'password_change_done.html')
             else:
                 return HttpResponse('bad')
     else:
-        form = ChangePasswordForm()
+        form = SetPasswordForm()
 
-    return render(request, 'login/set_password.html',
-                  {'form': form, 'user': u})
+    return render(request, 'set_password.html',
+                  {'form': form, 'user': user})
+
+def password_change_done(request):
+    return render(request, 'password_change_done.html')
 

@@ -43,21 +43,22 @@ class RegistrForm(forms.Form):
             raise ValidationError("Такой пользователь уже есть!")
         return username
 
-    class ChangePasswordForm(forms.Form):
+class SetPasswordForm(forms.Form):
 
-        password_old = forms.CharField(max_length=100, min_length=2, label="Старый пароль",
+    password_old = forms.CharField(max_length=100, min_length=2, label="Старый пароль",
                                    widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-        password_new = forms.CharField(max_length=100, min_length=2, label="Новый ароль",
-                                    widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-        password_re = forms.CharField(max_length=100, min_length=2, label="Новый ароль",
+    password_new = forms.CharField(max_length=100, min_length=2, label="Новый пароль",
+                                   widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password_re = forms.CharField(max_length=100, min_length=2, label="Повторите новый пароль",
                                        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
-        def clean(self):
-            password_old = self.cleaned_data.get('password_old')
-            password_new = self.cleaned_data.get('password_new')
-            if password_old!= password_new:
-                raise ValidationError("Пароли не совпадают")
-            return self.cleaned_data
+    def clean(self):
+        password_old = self.cleaned_data.get('password_old')
+        password_new = self.cleaned_data.get('password_new')
+        password_re = self.cleaned_data.get('password_re')
+        if password_re != password_new:
+            raise ValidationError("Пароли не совпадают")
+        return self.cleaned_data
 
     # def __init__(self, request=None, *args, **kwargs):
     #     self.request = request
@@ -72,3 +73,4 @@ class RegistrForm(forms.Form):
     #     if user is None:
     #         raise ValidationError("Неверный логин или пароль")
     #     return self.cleaned_data
+
