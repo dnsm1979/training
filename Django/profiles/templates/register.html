@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+ <div class="col-md-4">
+    <h3>Регистрация пользователя</h3>
+    <p>Пожалуйста заполните форму регистрации:</p>
+    <form action="{% url 'register' %}" method="post">
+        {{ form.non_field_errors }}
+
+        {% csrf_token %}
+         <div class="mb-3">
+                {{ form.username.errors }}
+                <label for="{{ form.username.id_for_label }}">Имя пользователя:</label>
+                {{ form.username }}
+            </div>
+            <div class="mb-3">
+                {{ form.password.errors }}
+                <label for="{{ form.password.id_for_label }}">Пароль:</label>
+                {{ form.password }}
+            </div>
+            <div class="mb-3">
+                {{ form.2.errors }}
+                <label for="{{ form.password2.id_for_label }}">Пароль2:</label>
+                {{ form.password2 }}
+            </div>
+
+                   <input type="submit" value="Зарегистрироваться">
+    </form>
+ </div>
+{% endblock %}

@@ -2,40 +2,65 @@
 
 {% block content %}
 
-        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
-  <li class="nav-item" role="presentation"><a href="{% url 'main' %}">
-    <button class="nav-link rounded-5" id="news-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Главная</button></a>
-  </li>
-        <li class="nav-item" role="presentation"><a href="{% url 'news' %}">
-    <button class="nav-link active rounded-5" id="news-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Новости</button></a>
-  </li>
-    <li class="nav-item" role="presentation"><a href="{% url 'about' %}">
-    <button class="nav-link rounded-5" id="obout-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">О нас</button></a>
-  </li>
-    <li class="nav-item" role="presentation"><a href="{% url 'management' %}">
-    <button class="nav-link rounded-5" id="management-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Руководство компании</button></a>
-  </li>
-  <li class="nav-item" role="presentation"><a href="{% url 'branches' %}">
-    <button class="nav-link rounded-5" id="branches-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Филиалы</button></a>
-  </li>
-  <li class="nav-item" role="presentation"><a href="{% url 'contacts' %}">
-    <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Контакты</button></a>
-  </li>
-    <li class="nav-item" role="presentation"><a href="{% url 'feedbacks' %}">
-    <button class="nav-link rounded-5" id="feedbacks-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Обратная связь</button></a>
-  </li>
-</ul>
     <h1>Список новостей</h1>
-    <ul>
-        {% for i in news %}
-            <li><a href="{% url 'news_detail' i.id %}">{{ i.title }}</a></li>
-        {% endfor %}
-    </ul>
-    <h2>Добавить новость</h2>
+<div class="col-md-10 mx-auto">
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Категории</h3>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for j in categoris %}
 
-    <form action="{% url 'news' %}" method='post'>
-        {% csrf_token %}
-        {{ news_form }}
-        <p><input type="submit" value="Опубликовать новость"></p>
-    </form>
+                    <li><a href="{% url 'news_category' j.id %}" class="btn {% if active_category == j %} btn-primary {% endif %}" role="button" data-bs-toggle="button">{{ j.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3>Новости</h3>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for i in news %}
+                    <li><a href="{% url 'news_detail' i.id %}" class="btn" role="button" data-bs-toggle="button">{{ i.title }}</a></li>
+                    <p>{{ i.get_short_text }}</p>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+
+
+
+        <div class="col-md-4">
+        <h3>Добавить новость</h3>
+        <form action="{% url 'news' %}" method='post'>
+            {% csrf_token %}
+            {{ news_form.non_field_errors }}
+            <div class="mb-3">
+                {{ news_form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Название новости:</label>
+                {{ news_form.title }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.anons.errors }}
+                <label for="{{ form.anons.id_for_label }}">Анонс новости:</label>
+                {{ news_form.anons }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.text.errors }}
+                <label for="{{ form.text.id_for_label }}">Текст новости:</label>
+                {{ news_form.text }}
+            </div>
+
+            <div class="mb-3">
+                {{ news_form.category.errors }}
+                <label for="{{ form.category.id_for_label }}">Категория:</label>
+                {{ news_form.category }}
+            </div>
+
+                   <input type="submit" value="Опубликовать новость">
+        </form>
+     </div>
+    </div>
+    </div>
 {% endblock %}
