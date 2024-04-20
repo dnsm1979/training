@@ -1,17 +1,17 @@
 from django.shortcuts import render, redirect
 
-from .models import Positions
-from .forms import PositionsForm
+from .models import Sellers
+from .forms import SellersForm
 
 
-def client(request):
+def sellers(request):
 
-    positions = Positions.objects.all()
-    form = PositionsForm()
+    sellers = Sellers.objects.all()
+    form = SellersForm()
     if request.method == "POST":
-        form = PositionsForm(request.POST)
+        form = SellersForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('positions')
-    context = {"positions": positions, "form": form}
-    return render(request, 'positions.html', context)
+            return redirect('sellers')
+    context = {"sellers": sellers, "form": form}
+    return render(request, 'sellers.html', context)

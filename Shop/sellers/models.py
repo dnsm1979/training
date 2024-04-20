@@ -1,7 +1,14 @@
 from django.db import models
 
 class Positions(models.Model):
-    name = models.CharField(primary_key=True, max_length=255, verbose_name='Позиция в фирме')
+    position = models.CharField(primary_key=True, max_length=255, verbose_name='Позиция в фирме')
+
+    def __str__(self):
+        return f'{self.position}'
+
+    class Meta:
+        verbose_name = 'Позиция в фирме'
+        verbose_name_plural = 'Позиции в фирме'
 
 class Sellers(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='Имя')
@@ -16,5 +23,5 @@ class Sellers(models.Model):
         return f'{self.first_name} {self.last_name}'
 
     class Meta:
-        verbose_name = 'Клиент'
-        verbose_name_plural = 'Клиенты'
+        verbose_name = 'Продавец'
+        verbose_name_plural = 'Продавцы'
