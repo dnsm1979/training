@@ -79,7 +79,7 @@ def set_password(request):
                 user.save()
                 return redirect(request, 'password_change_done.html')
             else:
-                return HttpResponse('bad')
+                return redirect(request, 'set_password.html')
     else:
         form = SetPasswordForm()
 
