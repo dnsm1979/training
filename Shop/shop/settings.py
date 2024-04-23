@@ -40,11 +40,8 @@ INSTALLED_APPS = [
     "client",
     "products",
     "sellers",
-<<<<<<< HEAD
     "order",
 
-=======
->>>>>>> 58063032c56d2d227d10b4c2a14d3937ae6f45a2
 
 ]
 

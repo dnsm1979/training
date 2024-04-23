@@ -20,3 +20,5 @@ class ClientForm(forms.ModelForm):
         if Client.objects.filter(phone=phone).exists():
             raise ValidationError('Такой телефон уже есть')
         return phone
+
+
