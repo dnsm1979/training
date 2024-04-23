@@ -24,5 +24,8 @@ urlpatterns = [
     path("", include('client.urls')),
     path("products/", include('products.urls')),
     path("sellers/", include('sellers.urls')),
+<<<<<<< HEAD
     path("order/", include('order.urls')),
+=======
+>>>>>>> 58063032c56d2d227d10b4c2a14d3937ae6f45a2
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
