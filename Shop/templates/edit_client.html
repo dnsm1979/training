@@ -5,7 +5,7 @@
 
         <h2>Форма редактирования записей клиента</h2>
         <div class="col-md-3">
-            <form action="{% url 'client' %}" method="post">
+            <form action="{% url 'edit_client' clients.id %}" method="post">
                 {% csrf_token %}
                 {{ form.non_field_errors }}
                 <div class="mb-3">
