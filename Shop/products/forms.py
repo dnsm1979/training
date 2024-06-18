@@ -18,9 +18,15 @@ class ProductsForm(forms.ModelForm):
             visible.field.widget.attrs['class'] = 'form-control'
 
     def clean_title(self):
+<<<<<<< HEAD
 
         title = self.cleaned_data.get('title')
         if not self.instance:
             if Products.objects.filter(title=title).exists():
                 raise ValidationError('Такой товар уже есть')
+=======
+        title = self.cleaned_data.get('title')
+        if Products.objects.filter(title=title).exists():
+            raise ValidationError('Такой товар уже есть')
+>>>>>>> d501b3992675a797640e7400aa0be0837b5125da
         return title
