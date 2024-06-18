@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+        <h2>Вы действительно хотите удалить запись "{{ clients.first_name }}"?</h2>
+        <div class="col-md-3">
+            <form action="{% url 'delete_client' clients.id %}" method="post">
+                {% csrf_token %}
+
+                <input type="submit" value="Да. Удалить!">
+            </form>
+        </div>
+
+    </main>
+{% endblock %}

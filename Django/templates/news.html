@@ -1,10 +1,66 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Список новостей</h2>
-    <ui>
-        {% for i in news %}
-            <li><a href="{% url 'news_detail' i.id %}">{{ i.title }}</a></li>
-        {% endfor %}
-    </ui>
+
+    <h1>Список новостей</h1>
+<div class="col-md-10 mx-auto">
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Категории</h3>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for j in categoris %}
+
+                    <li><a href="{% url 'news_category' j.id %}" class="btn {% if active_category == j %} btn-primary {% endif %}" role="button" data-bs-toggle="button">{{ j.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3>Новости</h3>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for i in news %}
+                    <li><a href="{% url 'news_detail' i.id %}" class="btn" role="button" data-bs-toggle="button">{{ i.title }}</a></li>
+                    <p>{{ i.get_short_text }}</p>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+
+
+
+        <div class="col-md-4">
+        <h3>Добавить новость</h3>
+        <form action="{% url 'news' %}" method='post'>
+            {% csrf_token %}
+            {{ news_form.non_field_errors }}
+            <div class="mb-3">
+                {{ news_form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Название новости:</label>
+                {{ news_form.title }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.anons.errors }}
+                <label for="{{ form.anons.id_for_label }}">Анонс новости:</label>
+                {{ news_form.anons }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.text.errors }}
+                <label for="{{ form.text.id_for_label }}">Текст новости:</label>
+                {{ news_form.text }}
+            </div>
+
+            <div class="mb-3">
+                {{ news_form.category.errors }}
+                <label for="{{ form.category.id_for_label }}">Категория:</label>
+                {{ news_form.category }}
+            </div>
+
+                   <input type="submit" value="Опубликовать новость">
+        </form>
+     </div>
+    </div>
+    </div>
 {% endblock %}

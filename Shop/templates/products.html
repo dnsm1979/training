@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+    <h2>Товары</h2>
+    <div class="col-md-3">
+        <form action="{% url 'products' %}" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="mb-3">
+                {{ form.title.errors }}
+                <label for="{{ form.title.id_for_label }}" class="form-label">Название:</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+                {{ form.text.errors }}
+                <label for="{{ form.text.id_for_label }}" class="form-label">Описание:</label>
+                {{ form.text }}
+            </div>
+            <div class="mb-3">
+                {{ form.price.errors }}
+                <label for="{{ form.price.id_for_label }}" class="form-label">Цена:</label>
+                {{ form.price }}
+            </div>
+            <div class="mb-3">
+                {{ form.quantity.errors }}
+                <label for="{{ form.quantity.id_for_label }}" class="form-label">Количество:</label>
+                {{ form.quantity }}
+            </div>
+            <input type="submit" value="Добавить">
+        </form>
+    </div>
+
+    <div class="table-responsive" style="margin:20px">
+        <div style="display:flex">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Сортировка
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item {% if order_by == 'price' %}active{% endif %}" href="?order_by=price">Цена</a></li>
+                <li><a class="dropdown-item {% if order_by == 'count' %}active{% endif %}" href="?order_by=count">Количество</a></li>
+
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Порядок
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item {% if range == 'desc' %}active{% endif %}" href="?range=desc&order_by={{ order_by}}">По убыванию</a></li>
+                <li><a class="dropdown-item {% if range == 'asc' %}active{% endif %}" href="?range=asc&order_by={{ order_by}}">По возростанию</a></li>
+
+            </ul>
+            </div>
+        </div>
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Цена</th>
+                <th>Количество</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'products_detail' product.id %}">{{ product.title }}</a></td>
+                <td>{{ product.text }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

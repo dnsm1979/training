@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+        <h2>Клиенты</h2>
+        <div class="col-md-3">
+            <form action="{% url 'client' %}" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="mb-3">
+                    {{ form.first_name.errors }}
+                    <label for="{{ form.first_name.id_for_label }}" class="form-label">Имя:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="mb-3">
+                    {{ form.last_name.errors }}
+                    <label for="{{ form.last_name.id_for_label }}" class="form-label">Фамилия:</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="mb-3">
+                    {{ form.phone.errors }}
+                    <label for="{{ form.phone.id_for_label }}" class="form-label">Телефон:</label>
+                    {{ form.phone }}
+                </div>
+                <div class="mb-3">
+                    {{ form.email.errors }}
+                    <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
+                    {{ form.email }}
+                </div>
+                <input type="submit" value="Добавить">
+            </form>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Телефон</th>
+                    <th>Почта</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ client.first_name }}</td>
+                        <td>{{ client.last_name }}</td>
+                        <td>{{ client.phone }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>
+                            <div class="btn-toolbar justify-content-between" role="toolbar"
+                                 aria-label="Toolbar with button groups">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    <a href="{% url 'edit_client' client.id %}">
+                                        <button type="button" class="btn btn-outline-secondary">
+                                            <svg width="16" height="16">
+                                                <image class='frame' xlink:href='{% static "images/pen.svg" %}'></image>
+                                            </svg>
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'delete_client' client.id %}">
+                                        <button type="button" class="btn btn-outline-secondary">
+                                            <svg width="16" height="16">
+                                                <image class='frame'
+                                                       xlink:href='{% static "images/trash.svg" %}'></image>
+                                        </button>
+                                    </a>
+                                </div>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Магазин</a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'client' %}">
+                            <span data-feather="home"></span>
+                            Клиенты
+                        </a>
+                        <a class="nav-link active" href="{% url 'products' %}">
+                            <span data-feather="home"></span>
+                            Товары
+                        </a>
+                        <a class="nav-link active" href="{% url 'sellers' %}">
+                            <span data-feather="home"></span>
+                            Продавцы
+                        </a>
+                        <a class="nav-link active" href="{% url 'order' %}">
+                            <span data-feather="home"></span>
+                            Продажи
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>

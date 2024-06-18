@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+            <h2>Товары</h2>
+            <div class="col-md-3">
+    <form action="{% url 'sellers' %}" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+            {{ form.first_name.errors }}
+            <label for="{{ form.first_name.id_for_label }}" class="form-label">Имя:</label>
+            {{ form.first_name }}
+        </div>
+        <div class="mb-3">
+            {{ form.last_name.errors }}
+            <label for="{{ form.last_name.id_for_label }}" class="form-label">Фамилия:</label>
+            {{ form.last_name }}
+        </div>
+        <div class="mb-3">
+            {{ form.phone.errors }}
+            <label for="{{ form.phone.id_for_label }}" class="form-label">Телефон:</label>
+            {{ form.phone }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.errors }}
+            <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
+            {{ form.email }}
+        </div>
+                <div class="mb-3">
+            {{ form.data_in.errors }}
+            <label for="{{ form.data_in.id_for_label }}" class="form-label">Дата приема на работу:</label>
+            {{ form.data_in }}
+        </div>
+                <div class="mb-3">
+            {{ form.position.errors }}
+            <label for="{{ form.position.id_for_label }}" class="form-label">Позиция в фирме:</label>
+            {{ form.position }}
+        </div>
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Телефон</th>
+                        <th>E-mail</th>
+                        <th>Дата приема на работу</th>
+                        <th>Позиции в фирме</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for seller in sellers %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ seller.first_name }}</td>
+                        <td>{{ seller.last_name }}</td>
+                        <td>{{ seller.phone }}</td>
+                        <td>{{ seller.email }}</td>
+                        <td>{{ seller.data_in }}</td>
+                        <td>{{ seller.position }}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+   {% endblock %}

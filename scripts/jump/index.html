@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Jump for Joy</title>
+    <link href="styles/my_style.css" rel="stylesheet">
+</head>
+<div id="header">
+
+    <body>
+        <h2>Jump for Joy Sale</h2>
+</div>
+</div id="main">
+<div class="guess_box"><img src="images/jump1.jpg" /></div>
+<div class="guess_box"><img src="images/jump2.jpg" /></div>
+<div class="guess_box"><img src="images/jump3.jpg" /></div>
+<div class="guess_box"><img src="images/jump4.jpg" /></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".guess_box").click(function () {
+            $(".guess_box p").remove();
+            var discount = Math.floor((Math.random() * 5) + 5);
+            var discount_msg = "<p>Your Discount is " + discount + "%</p>";
+            alert(discount_msg);
+            $(this).append(discount_msg);
+        });//end click function
+    });//end doc ready
+</script>
+</body>
+
+</html>

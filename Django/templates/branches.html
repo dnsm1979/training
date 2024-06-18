@@ -1,10 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Список филиалов</h2>
-    <ui>
-        {% for i in branches %}
-            <li><a href="{% url 'branches_detail' i.id %}">{{ i.title }}</a></li>
-        {% endfor %}
-    </ui>
+
+
+    <h1>Список филиалов</h1>
+    <div class="col-md-10 mx-auto">
+    <div class="row">
+        <div class="col-md-2">
+            <h2>Страны</h2>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for j in countries %}
+
+                    <li><a href="{% url 'branches_country' j.id %}" class="btn {% if active_country == j %} btn-primary {% endif %}" role="button" data-bs-toggle="button">{{ j.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Филиалы</h2>
+            <p class="d-inline-flex gap-1">
+            <ul>
+                {% for i in branches %}
+                    <li><a href="{% url 'branches_detail' i.id %}" class="btn" role="button" data-bs-toggle="button">{{ i.title }}</a></li>
+                    <p>{{ i.get_short_text }}</p>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+           <div class="col-md-4">
+        <h3>Добовление нового филиала</h3>
+        <form action="{% url 'branches_add' %}" method='post'>
+            {% csrf_token %}
+            {{ branch_form.non_field_errors }}
+            <div class="mb-3">
+                {{ branch_form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Название филиала:</label>
+                {{ branch_form.title }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.text.errors }}
+                <label for="{{ form.text.id_for_label }}">Описание:</label>
+                {{ branch_form.text }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.country.errors }}
+                <label for="{{ form.country.id_for_label }}">Страна:</label>
+                {{ branch_form.country }}
+            </div>
+
+                   <input type="submit" value="Submit">
+        </form>
+    </div>
+    </div>
+    </div>
+
+
 {% endblock %}

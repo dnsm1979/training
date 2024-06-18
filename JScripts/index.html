@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+</head>
+
+<body>
+    <h2>Page Header</h2>
+    <div>
+        <h3>Block Header</h3>
+        <p>Text</p>
+    </div>
+    <script>
+        let el = document.createElement('p');
+        el.setAttribute('style', 'color:red');
+        el.innerText = 'Text2222';
+
+        let tmp = document.querySelector('div');
+        tmp.style.border = 'solid';
+        tmp.insertAdjacentHTML('beforeend', el.outerHTML + '\n');
+        console.log(tmp.outerHTML);
+        for (let index = 0; index < 3; index++) {
+            let par = document.createElement('div');
+            let head_ = document.createElement('h3');
+            let paragraph_ = document.createElement('p');
+            head_.innerText = 'Заголовок'; +(index + 1);
+            paragraph_.innerText = 'Важный Текст'; + index;
+            paragraph_.style.color = 'green';
+            par.appendChild(head_);
+            par.appendChild(paragraph_);
+            par.style.border = 'solid';
+            tmp.insertAdjacentHTML('afterend', '\n' + par.outerHTML + '\n');
+        }
+        /*
+                const getMultipleRecords = (numRecords) => {
+            // Запрос на сервер для получения numRecords записей
+            // Вывод полученных записей
+        };
+        
+        // Пример использования
+        getMultipleRecords(3);
+        
+        
+                let loadedRecords = [];
+        let currentIndex = 0;
+        const batchSize = 5;
+        
+        const loadMoreRecords = () => {
+            // Запрос на сервер для получения пачки новостей
+            // Сохранение полученных записей
+        };
+        
+        const showRecords = () => {
+            for (let i = currentIndex; i < Math.min(currentIndex + 5, loadedRecords.length); i++) {
+                // Вывод записей
+            }
+            currentIndex += batchSize;
+        };
+        
+        // Пример использования
+        loadMoreRecords();
+        showRecords();
+        
+        
+        
+                window.addEventListener('scroll', () => {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                // Загрузка и добавление новых записей
+                }
+                });
+        
+              */
+    </script>
+</body>
+
+</html>

@@ -3,10 +3,29 @@
 {% block content %}
 <h2>Добавить филиал</h2>
 
-    <form action="{% url 'branches_add' %}" method='post'>
-        {% csrf_token %}
-        {{ branch_form }}
-       <input type="submit" value="Submit">
-    </form>
 
+    <div class="col-md-4">
+        <h3>Добовление нового филиала</h3>
+        <form action="{% url 'branches_add' %}" method='post'>
+            {% csrf_token %}
+            {{ branch_form.non_field_errors }}
+            <div class="mb-3">
+                {{ branch_form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Название филиала:</label>
+                {{ branch_form.title }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.text.errors }}
+                <label for="{{ form.text.id_for_label }}">Описание:</label>
+                {{ branch_form.text }}
+            </div>
+            <div class="mb-3">
+                {{ branch_form.country.errors }}
+                <label for="{{ form.country.id_for_label }}">Страна:</label>
+                {{ branch_form.country }}
+            </div>
+
+                   <input type="submit" value="Submit">
+        </form>
+    </div>
 {% endblock %}

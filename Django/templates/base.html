@@ -1,14 +1,46 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="{% static 'style.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <title>Company</title>
   </head>
   <body>
     <main>
-    {% block content %}{% endblock %}
+        <div class="col-md-10 mx-auto">
+             <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+  <li class="nav-item" role="presentation"><a href="{% url 'main' %}">
+    <button class="nav-link rounded-5{% if request.path == '/'%} nav-link active rounded-5 {% endif %}" id="first-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Главная</button></a>
+  </li>
+        <li class="nav-item" role="presentation"><a href="{% url 'news' %}">
+    <button class="nav-link rounded-5{% if request.path == '/news'%} nav-link active rounded-5 {% endif %}" id="news-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Новости</button></a>
+  </li>
+    <li class="nav-item" role="presentation"><a href="{% url 'about' %}">
+    <button class="nav-link rounded-5{% if request.path == '/about'%} nav-link active rounded-5 {% endif %}" id="obout-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">О нас</button></a>
+  </li>
+    <li class="nav-item" role="presentation"><a href="{% url 'management' %}">
+    <button class="nav-link rounded-5{% if request.path == '/management'%} nav-link active rounded-5 {% endif %}" id="management-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Руководство компании</button></a>
+  </li>
+  <li class="nav-item" role="presentation"><a href="{% url 'branches' %}">
+    <button class="nav-link rounded-5{% if request.path == '/branches'%} nav-link active rounded-5 {% endif %}" id="branches-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Филиалы</button></a>
+  </li>
+  <li class="nav-item" role="presentation"><a href="{% url 'contacts' %}">
+    <button class="nav-link rounded-5{% if request.path == '/contacts'%} nav-link active rounded-5 {% endif %}" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Контакты</button></a>
+  </li>
+    <li class="nav-item" role="presentation"><a href="{% url 'feedbacks' %}">
+    <button class="nav-link rounded-5{% if request.path == '/feedbacks'%} nav-link active rounded-5 {% endif %}" id="feedbacks-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Обратная связь</button></a>
+  </li>
+               <li class="nav-item" role="presentation"><a href="{% url 'home' %}">
+    <button class="nav-link rounded-5{% if request.path == '/profiles/home'%} nav-link active rounded-5 {% endif %}" id="login-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Личный кабинет{% if user.is_authenticated %} {{user.username}} {% endif %}</button></a>
+  </li>
+</ul>
+            {% block content %}{% endblock %}
+        </div>
     </main>
   </body>
 </html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Validation</title>
+  <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button id="sendRequestButton">Send Request</button>
+
+  <script>
+    $(document).ready(
+      function () {
+        $("#sendRequestButton").click(
+          function () {
+            const data = {
+              object1: {
+                spell: 'specific message',
+                day_of_week: 'mondey',
+                message: 'Lesson is like a work',
+                date: "2024-05-29",
+
+              },
+              object2: {
+                name: 'Denis',
+                Age: '45',
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+              },
+            };
+            $.ajax({
+              url: 'http://45.10.42.142:3000/validate',
+              method: 'post',
+              contentType: 'application/json',
+              data: JSON.stringify(data),
+              success: function (response) {
+                alert('Respons: ' + response);
+              },
+              error: function (jqXHR, textStatus, errorThrow) {
+                alert('Error: ' +
+                  jqXHR.status + ' ' +
+                  jqXHR.statusText + ' ' +
+                  jqXHR.responseText
+                );
+              }
+
+            });
+          }
+        )
+      }
+    )
+
+
+
+    // let button = document.getElementById('sendRequestButton');
+    // button.addEventListener('click', async () => {
+    //   const data = {
+    //     object1: {
+    //       spell: 'specific message',
+    //       day_of_week: 'mondey',
+    //       message: 'Lesson is like a work',
+    //       date: "2024-05-29",
+
+    //     },
+    //     object2: {
+    //       name: 'Denis',
+    //       Age: '45',
+    //       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    //     },
+    //   };
+
+    //   try {
+    //     //fetch возврощает promice 
+    //     // промис - объект общание что в нём появятся данные которые мы попросили
+    //     // сама функция выполняется отдельно но для нашего алгоритма сразу завершается возвращая токен 
+    //     // доступа к результату работы
+    //     const response = await fetch('http://45.10.42.142:3000/validate', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify(data)
+    //     });
+
+
+    //     // if(!response.ok){
+    //     //   // код рекации на то что ответ не пришёл в состояние полученного корректно ответа
+    //     //   response.text();
+    //     // }
+
+    //     // Получение и вывод данных ответа
+    //     const responseData = await response.text();
+    //     alert('Response: ' + responseData);
+    //   } catch (error) {
+    //     alert('Error: ' + error.message);
+    //   }
+    // });
+  </script>
+</body>
+
+</html>

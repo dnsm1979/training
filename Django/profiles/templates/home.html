@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="col-md-4">
+    <h2>Личный кабинет {{ request.user.username }}</h2>
+        <p>{{ request.user.profile.bio }}</p>
+
+
+    </div>
+    <div class="row">
+        <div>
+            <a href="{% url 'logout' %}">
+            <button class="nav-link rounded-5" id="login-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Выход</button></a>
+        </div>
+        <div>
+            <a href="{% url 'change_password' %}">
+            <button class="nav-link rounded-5" id="set_password-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Сменить пароль</button></a>
+        </div>
+    </div>
+
+
+{% endblock %}
