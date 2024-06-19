@@ -1,27 +1,4 @@
-// $(document).ready(function () {
-//     $(".guess_box").click(checkForCode);
-//     function checkForCode() {
-//         var my_num = Math.floor((Math.random() * 5) + 5);
-//         var discount = "<p>Your Discount is " + my_num + "%</p>";
-//         $(this).append(discount);
-//         $(".guess_box").each(function () {
-//             $(this).unbind('click');
-//         });
-//     }
-// });
-// function checkForCode() {
-//     var discount;
-//     if ($.contains(this, document.getElementById("has_discount"))) {
-//         var my_num = getRandom(5);
-//         discount = "<p>Your Discount is " + my_num + "%</p>";
-//     } else {
-//         discount = "<p>Sorry, no discount this time!</p>";
-//     }
-//     $(this).append(discount);
-//     $(".guess_box").each(function () {
-//         $(this).unbind('click');
-//     });
-// }
+
 $(document).ready(function () {
     $(".guess_box").click(checkForCode);
     function getRandom(num) {
@@ -41,14 +18,29 @@ $(document).ready(function () {
     function checkForCode() {
         var discount;
         if ($.contains(this, document.getElementById("has_discount"))) {
-            var my_num = getRandom(5);
-            discount = "<p>Your Discount is " + my_num + "%</p>";
+            var my_num = getRandom(100);
+            discount = "<p>Your Code: CODE" + my_num + "</p>";
         } else {
             discount = "<p>Sorry, no discount this time!</p>";
         }
         $(this).append(discount);
         $(".guess_box").each(function () {
-            $(this).unbind('click');
+            if ($.contains(this, document.getElementById("has_discount"))) {
+                $(this).addClass("discount");
+            } else {
+                $(this).addClass("no_discount");
+            }
+            $(this).unbind();
         });
+        $("#result").append(discount);
     }
+    $(".guess_box").hover(
+        function () {
+            // this is the mouseenter event handler
+            $(this).addClass("my_hover");
+        },
+        function () {
+            // this is the mouseleave event handler
+            $(this).removeClass("my_hover");
+        });
 }); //End document.ready()
