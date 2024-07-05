@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-5">Корзина ({{ basket.basket_lines.all|length }})</h2>
+
+{% for line in basket.basket_lines.all %}
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <img src="{{ line.course.image.url }}" height="100" width="100">
+        </div>
+            <div style="font-size: 30px" class="col-md-5">
+            {{ line.course.title }}
+        </div>
+            <div style="font-size: 20px" class="col-md-1">
+            {{ line.course.price }} p.
+        </div>
+        <form method="post" action="{% url 'basket_remove' line.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">удалить</button>
+        </form>
+    </div>
+{% endfor %}
+
+<h3>Итого: {{basket.get_total_price}} р.</h3>
+<a class="btn" role="button" href="{% url 'checkout_preview' %}">Подтвердить</a>
+
+{% endblock %}

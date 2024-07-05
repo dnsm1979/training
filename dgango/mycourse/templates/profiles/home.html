@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Личный кабинет {{ request.user.username }}</h2>
+<p>{{ request.user.profile.bio }} </p>
+
+<h2>Ваши курсы</h2>
+{% for course in request.user.profile.get_courses %}
+<p><a href="{% url 'profile_course' course.id %}">{{ course.title }}</a></p>
+{% endfor %}
+
+<div class="col-md-4">
+<a href="{% url 'logout' %}">Выйти</a>
+</div>
+
+{% block home_content %}
+{% endblock %}
+
+{% endblock %}

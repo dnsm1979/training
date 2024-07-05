@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-5">{{ course.title }}</h2>
+<img class="mb-5" src="{{ course.image.url }}" height="200" width="200">
+<h3 class="mb-5">Содержание</h3>
+
+    {% for lecture in course.course_lectures.all %}
+        <p>{{ lecture.stage }} - {{ lecture.title }}</p>
+    {% endfor %}
+<p style="font-size: 20px">Цена: {{ course.price }} р.</p>
+{% if course.id in basket.get_course_id %}
+<button type="submit" class="btn btn-primary">Оформить</button>
+{% else %}
+
+<form method="post" action="{% url 'basket_add' course.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Купить</button>
+
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mb-2">
+    {% for course in active_category.category_courses.all %}
+    <div class="col-md-10">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary-emphasis">{{ course.category.title }}</strong>
+                <h3 class="mb-0">{{ course.title }}</h3>
+                <p class="card-text mb-auto">{{ course.description }}</p>
+                <a href="{% url 'course' course.id %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Перейти к описанию
+                    <svg class="bi">
+                        <use xlink:href="#chevron-right"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src="{{ course.image.url }}" width="200" height="200">
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row g-5">
+    <div class="col-md-8">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+            Новости платформы
+        </h3>
+
+
+    </div>
+
+
+</div>
+{% endblock %}
