@@ -8,39 +8,87 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Course',
+            name="Course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('image', models.FileField(upload_to='media')),
-                ('price', models.IntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("description", models.TextField()),
+                ("image", models.FileField(upload_to="media")),
+                ("price", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Lecture',
+            name="Lecture",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='course_lectures', to='course.course')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("description", models.TextField()),
+                (
+                    "course",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="course_lectures",
+                        to="course.course",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('text', models.TextField(blank=True, null=True)),
-                ('file', models.FileField(blank=True, null=True, upload_to='media')),
-                ('material_type', models.CharField(choices=[('text', 'Text'), ('image', 'Img'), ('video', 'Video')], default='text', max_length=10)),
-                ('stage', models.IntegerField(default=1)),
-                ('lecture', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='lecture_materials', to='course.lecture')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("text", models.TextField(blank=True, null=True)),
+                ("file", models.FileField(blank=True, null=True, upload_to="media")),
+                (
+                    "material_type",
+                    models.CharField(
+                        choices=[
+                            ("text", "Text"),
+                            ("image", "Img"),
+                            ("video", "Video"),
+                        ],
+                        default="text",
+                        max_length=10,
+                    ),
+                ),
+                ("stage", models.IntegerField(default=1)),
+                (
+                    "lecture",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="lecture_materials",
+                        to="course.lecture",
+                    ),
+                ),
             ],
         ),
     ]

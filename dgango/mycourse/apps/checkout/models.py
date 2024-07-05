@@ -6,8 +6,9 @@ from apps.profiles.models import User
 
 class Order(models.Model):
     class Status(models.TextChoices):
-        WAITING = 'waiting'
-        COMPLITE = 'complete'
+        WAITING = "waiting"
+        COMPLITE = "complete"
+
     basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     total_price = models.IntegerField()

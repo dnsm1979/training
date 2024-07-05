@@ -14,8 +14,8 @@ class Profile(models.Model):
 
 
 class ProfileCourse(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="profile_courses")
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="profile_courses"
+    )
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
-
-

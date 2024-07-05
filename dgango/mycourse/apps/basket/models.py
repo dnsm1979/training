@@ -5,10 +5,12 @@ from apps.course.models import Course
 
 class Basket(models.Model):
     class Status(models.TextChoices):
-        OPEN = 'open'
-        CLOSE = 'close'
+        OPEN = "open"
+        CLOSE = "close"
 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='baskets', null=True, blank=True)
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="baskets", null=True, blank=True
+    )
     status = models.CharField(choices=Status, default=Status.OPEN, max_length=20)
     created_date = models.DateTimeField(auto_now_add=True)
 
@@ -25,9 +27,10 @@ class Basket(models.Model):
         return course_ids
 
 
-
 class Line(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     price = models.IntegerField()
     created_date = models.DateTimeField(auto_now_add=True)
-    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, related_name='basket_lines')
+    basket = models.ForeignKey(
+        Basket, on_delete=models.CASCADE, related_name="basket_lines"
+    )
